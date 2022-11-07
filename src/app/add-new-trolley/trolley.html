@@ -1,0 +1,105 @@
+<div class="container-fluid row addbackgroundcolor m-0">
+    <div class="offset-lg-2 col-lg-10 col-12 col-md-10 offset-md-2 col-sm-12">
+        <div class="trolley-content-main">
+            <div class="small-heading">
+                <p class="small" style="font-size:12px">Trolleys/ List of Trolley/ Add new trolley</p>
+            </div>
+            <div class="row">
+                <div class="col setPosition">
+                    <h2 class="trolley-heading">Add new trolley</h2>
+                </div>
+                <div class=" trolley-content">
+                    <form class="form-addnewtrolley" [formGroup]="addtrolley">
+                        <div class="row d-flex p-3">
+                            <div class="col-lg-4 col-xl col-sm-4 col-md-4">
+                                <label for="trolleynumber" class="form-label">Trolley Number</label>
+                                <input type="text" class="form-control rounded-1" id="trolleynumber"
+                                    [(ngModel)]="addnewtrolley.trolleyNumber" placeholder="Trolley Number"
+                                    formControlName="trolleynumber" required>
+                                <span class="text-danger"
+                                    *ngIf="(submitformControl['trolleynumber'].touched || submitted) && !submitformControl['trolleynumber'].value">
+                                    Trolley number is required
+                                </span>
+                            </div>
+                            <div class="col-lg-4 col-xl col-sm-4 col-md-4">
+                                <label for="trolleyname" class="form-label">Trolley Name</label>
+                                <input type="text" class="form-control rounded-1" id="trolleyname"
+                                    formControlName="trolleyname" placeholder="Trolley Name" required
+                                    [(ngModel)]="addnewtrolley.trolleyName">
+                                <span class="text-danger"
+                                    *ngIf="(submitformControl['trolleyname'].touched || submitted) && !submitformControl['trolleyname'].value">
+                                    Trolley name is required
+                                </span>
+                            </div>
+                            <div class="col-lg-4 col-xl col-sm-4 col-md-4">
+                                <label for="trolleycapacity" class="form-label">Trolley Capacity</label>
+                                <input type="text" class="form-control rounded-1" id="trolleycapacity"
+                                    formControlName="trolleycapacity" [(ngModel)]="addnewtrolley.partsCapacity"
+                                    placeholder="Trolley Capacity" required>
+                                <span class="text-danger"
+                                    *ngIf="(submitformControl['trolleycapacity'].touched || submitted) && !submitformControl['trolleycapacity'].value">
+                                    Trolley capacity is required
+                                </span>
+                            </div>
+
+                        </div>
+                        <div class="row d-flex p-3">
+                            <div class="col-lg-4 col-xl col-sm-4 col-md-4">
+                                <label for="trolleytype" class="form-label">Trolley Model</label>
+                                <input type="text" class="form-control rounded-1" id="trolleytype"
+                                    formControlName="trolleytype" placeholder="Trolley Model" required
+                                    [(ngModel)]="addnewtrolley.trolleyModel">
+                                <span class="text-danger"
+                                    *ngIf="(submitformControl['trolleytype'].touched || submitted) && !submitformControl['trolleytype'].value">
+                                    Trolley model is required
+                                </span>
+                            </div>
+                            <div class="col-lg-4 col-xl col-sm-4 col-md-4">
+                                <label for="trolleycolor" class="form-label">Trolley Color</label><br>
+                                <input type="color" #colorval id="selectcolor"
+                                    (change)="getcolorval(colorval.value)"> <p class="d-inline">{{colorName=="" ? "Select color" : colorName}}</p><br>
+
+                            </div>
+                            <div class="col-lg-4 col-xl col-sm-4 col-md-4">
+                                <label for="department" class="form-label">Department</label>
+                                <input type="text" class="form-control rounded-1" id="department"
+                                    formControlName="department" placeholder="Department" required
+                                    [(ngModel)]="addnewtrolley.department">
+                                <span class="text-danger"
+                                    *ngIf="(submitformControl['department'].touched || submitted) && !submitformControl['department'].value">
+                                    Department is required
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row d-flex p-3">
+                            <div class="col-lg-4  col-sm-4 col-md-4">
+                                <label for="bletagid" class="form-label">BLE Tag Id</label>
+                                <input type="text" class="form-control rounded-1" id="bletagid"
+                                    formControlName="bletagid" placeholder="BLE Tag Id" required
+                                    [(ngModel)]="addnewtrolley.bleTagId">
+                                <span class="text-danger"
+                                    *ngIf="(submitformControl['bletagid'].touched || submitted) && !submitformControl['bletagid'].value">
+                                    BLE tag id is required
+                                </span>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-4-4">
+                                <label for="formFile" class="form-label">Add photo</label>
+
+                                <input class="form-control rounded-1  choosefile" #file type="file"
+                                    formControlName="formFile" accept='image/*' id="formFile"
+                                    (change)="changeAvatar(file.files)" required />
+                                <img [src]="avatarURL" *ngIf="avatarURL" width="50px">
+                            </div>
+                        </div>
+                        <div class="form-button d-flex justify-content-center">
+                            <button class="btn save-button m-4 rounded-1" type="submit"
+                                (click)="addNewTrolleyApi()"><a>Save</a> </button>
+                            <button type="reset" class="btn btn-secondary m-4 rounded-1"><a
+                                    routerLink="/dashboard/addtrolley">Cancel</a></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

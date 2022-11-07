@@ -1,0 +1,143 @@
+<div class="container-fluid row  m-0">
+    <div class="offset-lg-2 col-lg-10 col-12 col-md-10 offset-md-2 col-sm-12">
+
+        <!--col-xs-12 col-sm-offset-0 col-lg-6 col-lg-offset-2 text-center-->
+        <div class="trolley-content-main">
+            <app-spinner></app-spinner>
+            <div class="small-heading">
+                <p class="small" style="font-size:12px">Trolley/List of Trolley </p>
+            </div>
+            <div class="row">
+                <div class="col setPosition">
+                    <h2 class="trolley-heading">List of Trolley</h2>
+                </div>
+            </div>
+            <!-- for search and add new trolley, table -->
+            <div class="trolley-content">
+                <div class="search-field d-flex justify-content-between">
+                    <div>
+                        <input type="text" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm" placeholder="Search" [(ngModel)]="queryString"
+                            (keyup.enter)="getListoftrolleyService()">
+                    </div>
+                    <div class="buttons">
+                        <button class="printqrcode" (click)="printqrCode('printqr')">Print QR Code </button>
+                        <button class="add-trolley-option"><a routerLink="/dashboard/addnewtrolley"><img
+                                    src="./assets/image/plus.png" alt="add" class="logo-resize"> <span>Add New
+                                    Trolley</span></a></button>
+                    </div>
+                </div>
+                <div class="table">
+                    <div class="mat-elevation-z8 table-responsive table-wrapper-scroll-y custom-scrollbar">
+                        <table mat-table [dataSource]="dataSource" matSort class="custom-table">
+                            <ng-container matColumnDef="select">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                                        [checked]="selection.hasValue() && isAllSelected()"
+                                        [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                        [aria-label]="checkboxLabel()" (change)="getallids($event.checked)">
+                                    </mat-checkbox>
+                                </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <mat-checkbox (click)="$event.stopPropagation()"
+                                        (change)="onChecked(row.id, $event.checked)"
+                                        (change)="$event ? selection.toggle(row) : null"
+                                        [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                                    </mat-checkbox>
+                                </td>
+                            </ng-container>
+
+                            <!-- Sl no Column -->
+                            <ng-container matColumnDef="id">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Sl No. </th>
+                                <td mat-cell *matCellDef="let element; let i= index;" (click)="getrowid(element['id'])">
+                                    {{i+1}} </td>
+                            </ng-container>
+
+                            <!-- Image Column -->
+                            <ng-container matColumnDef="image">
+                                <th mat-header-cell *matHeaderCellDef>Image </th>
+                                <td mat-cell *matCellDef="let element" (click)="getrowid(element['id'])"><img
+                                        [src]="'data:image/jpeg;base64,' + element.image" alt="" width="40px"></td>
+                            </ng-container>
+
+                            <!-- BLE tag id Column -->
+                            <ng-container matColumnDef="trolleyNumber">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Trolley Number </th>
+                                <td mat-cell *matCellDef="let element" (click)="getrowid(element['id'])">
+                                    {{element.trolleyNumber}}</td>
+                            </ng-container>
+                            <!-- Trolley type Column -->
+                            <!-- Trolley type to model changed -->
+                            <ng-container matColumnDef="trolleyModel">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Trolley Model </th>
+                                <td mat-cell *matCellDef="let element" (click)="getrowid(element['id'])">
+                                    <p class="hexacolor" [style.backgroundColor]="element.colorHexaCode"
+                                        [style.padding]="padding" [style.borderRadius]="bradius"></p>
+                                    {{element.trolleyModel}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="trolleyName">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Trolley Name </th>
+                                <td mat-cell *matCellDef="let element" (click)="getrowid(element['id'])">
+                                    {{element.trolleyName}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="partsCapacity">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Trolley Capacity </th>
+                                <td mat-cell *matCellDef="let element" (click)="getrowid(element['id'])">
+                                    {{element.partsCapacity}}</td>
+                            </ng-container>
+                            <ng-container matColumnDef="department">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Department </th>
+                                <td mat-cell *matCellDef="let element" (click)="getrowid(element['id'])">
+                                    {{element.department}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="bleTagId">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header>BLE Tag Id </th>
+                                <td mat-cell *matCellDef="let element" (click)="getrowid(element['id'])">
+                                    {{element.bleTagId}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="qrCode">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header>QR Code </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <img [src]="'data:image/jpeg;base64,' + element.qrCodeImage" alt=""
+                                        width="40px"><br><span class="qrimagespan">{{element.qrCode}}</span>
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; let element; columns: displayedColumns; let i = index;">
+                            </tr>
+                            <!-- (click)="getrow(element['Id'])", (click)="getrow(row,$event)" -->
+                        </table>
+
+                        <mat-paginator #trolleyPage showFirstLastButtons aria-label="Select page of table data"
+                            [length]="paginationlength.length" [pageSize]="paginationlength.pageSize"
+                            [pageSizeOptions]="paginationlength.pageSizeOptions" (page)="pagechange($event)"
+                            class="custom-table-pagination">
+                        </mat-paginator>
+                    </div>
+
+                </div>
+                <div class="container d-none" id="printqr">
+                    <div class="printqr ">
+                        <div *ngFor="let data of printvalue" class="item">
+                            <img src="data:image/png;base64,{{data.qrimage}}" height="100px" width="100px" /><br>
+                            <span>QR Code : {{data.qrcode}}</span> <br>
+                            <span>Tr No : {{data.trolleynum}}</span><br>
+                            <span>Tr Mode : {{data.trolleymodel}}<p class="printcolor"
+                                    [style.backgroundColor]="data.trolleycolor" [style.padding]="padding"
+                                    [style.borderRadius]="bradius"></p></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<router-outlet></router-outlet>

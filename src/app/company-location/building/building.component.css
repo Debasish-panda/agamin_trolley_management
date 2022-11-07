@@ -1,0 +1,40 @@
+mat-dialog-content {
+    height: 40vh;
+
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+h2 {
+    text-transform: capitalize;
+    font-size: 18px;
+    border-radius: 5px 5px 0 0;
+    font-weight: 400;
+    color: #FF5428;
+    width: 70vw;
+}
+
+label {
+    color: black;
+}
+
+.mandatory {
+    color: red;
+    margin-left: 05px;
+}
+
+.line {
+    border-top: 1px solid rgb(0, 0, 0);
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.choosefile {
+    appearance: none;
+    cursor: default;
+    width: 205px;
+    font-size: 13px;
+
+}

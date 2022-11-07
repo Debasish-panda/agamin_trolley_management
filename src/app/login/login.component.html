@@ -1,0 +1,25 @@
+<div class="border d-flex align-items-center justify-content-center login-center addbackgroundcolor">
+    <div class="center-item">
+        <img src="./assets/image/indoautotechlogo.png" class="company-logo" alt="">
+        <header class="heading">Sign in</header>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+            <mat-form-field appearance="legacy" class="mat-input-container mat-form-field">
+                <mat-label>User Name</mat-label>
+                <input matInput placeholder="Enter your username"  formControlName="username" required  [(ngModel)]="login.username">
+                <mat-error *ngIf="username.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field><br>
+            <mat-form-field appearance="legacy" class="mat-input-container mat-form-field">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" placeholder="Enter your password" class="fadeIn" formControlName="password" required [(ngModel)]="login.password" (keyup.enter)="loginbyclick()">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    
+                </button>
+            </mat-form-field>
+            <div class="example-button-row">
+                <button mat-button class="submit" (click)="loginbyclick()">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

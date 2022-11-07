@@ -1,0 +1,103 @@
+<div class="container-fluid row addbackgroundcolor m-0">
+    <div class="offset-lg-2 col-lg-10 col-12 col-md-10 offset-md-2 col-sm-12">
+        <div class="trolley-content-main">
+            <div class="small-heading">
+                <p class="small" style="font-size:12px">Trolley/Trolley Movements</p>
+            </div>
+            <div class="row">
+                <div class="col setPosition">
+                    <h2 class="trolley-heading">Trolley Movements</h2>
+                </div>
+            </div>
+
+            <div class="trolley-content">
+                <div class="search-field">
+                    <input type="text" value="Search" class="form-control f-none shadow-none" aria-label="Sizing example input" ngDefaultControl placeholder="Search"
+                        aria-describedby="inputGroup-sizing-sm" [(ngModel)]="query" [ngModelOptions]="{standalone: true}" (keyup.enter)="gettrolleyMovementapi()">
+                    <select class="form-select shadow-none" aria-label="Default select example" #trolleyarea (change)="filtervalue(trolleyarea.value)">
+                        <option selected>Select Area/Zone</option>
+                        <option ngDefaultControl *ngFor="let data of areasearch">{{data.name}}</option>                        
+                    </select>
+                    <!-- <button (click)="print()">click</button> -->
+                </div>
+                <div class="table">
+                    <div class="mat-elevation-z8 table-responsive table-wrapper-scroll-y custom-scrollbar">
+                        <table mat-table [dataSource]="dataSource" matSort class="custom-table" >
+
+                            <!-- Sl no Column -->
+                            <ng-container matColumnDef="id">
+                                <th mat-header-cell *matHeaderCellDef>Sl No. </th>
+                                <td mat-cell *matCellDef="let element; let i=index"> {{i+1}} </td>
+                            </ng-container>
+
+                            <!-- Image Column -->
+                            <ng-container matColumnDef="image">
+                                <th mat-header-cell *matHeaderCellDef>Image </th>
+                                <td mat-cell *matCellDef="let element"><img src="data:image/JPEG;base64,{{element.image}}" alt="" height="25px"></td>
+                            </ng-container>
+
+                            <!-- BLE tag id Column -->
+                            <ng-container matColumnDef="bleTagId">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header>BLE Tag Id </th>
+                                <td mat-cell *matCellDef="let element"> {{element.bleTagId}} </td>
+                            </ng-container>
+
+                            <!-- Trolley type Column -->
+                            <!-- Insted of trolley type used model -->
+                            <ng-container matColumnDef="trolleyModel">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Trolley Model </th>
+                                <td mat-cell *matCellDef="let element"> {{element.trolleyModel}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="typeOfParts">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Type of Part </th>
+                                <td mat-cell *matCellDef="let element"> {{element.typeOfParts}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="numberOfParts">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Number of Part </th>
+                                <td mat-cell *matCellDef="let element"> {{element.numberOfParts}} </td>
+                            </ng-container>
+
+
+
+                            <!-- Previous area Column -->
+                            <ng-container matColumnDef="previousArea">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Previous Area </th>
+                                <td mat-cell *matCellDef="let element"> {{element.previousArea}} </td>
+                            </ng-container>
+
+                            <!-- Current area Column -->
+                            <ng-container matColumnDef="currentArea">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Current Area </th>
+                                <td mat-cell *matCellDef="let element"> {{element.currentArea}} </td>
+                            </ng-container>
+
+                            <!-- Date and time Column -->
+                            <ng-container matColumnDef="arrivalTime">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Date & Time of Arrival </th>
+                                <td mat-cell *matCellDef="let element"> {{element.arrivalTime | date:'short':'GMT'}} </td>
+                            </ng-container>
+
+                            <!-- Map Column -->
+                            <ng-container matColumnDef="findonmap">
+                                <th mat-header-cell *matHeaderCellDef>Find On Maps </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <a><img src="../../assets/image/address.png" class="icon-resize" alt=""></a>
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+
+                        <mat-paginator showFirstLastButtons aria-label="Select page of table data"
+                            [length]="paginationlength.length" [pageSize]="paginationlength.pageSize"
+                            [pageSizeOptions]="paginationlength.pageSizeOptions"
+                            (page)="pagechange($event)" class="custom-table-pagination">
+                        </mat-paginator>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

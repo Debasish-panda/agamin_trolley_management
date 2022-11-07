@@ -1,0 +1,105 @@
+<h2 mat-dialog-title>Add Section</h2>
+<div class="line"></div>
+<mat-dialog-content class="mat-typography" style="overflow-y: scroll;">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label class="control-label">Location<b class="mandatory">*</b></label>
+        <div class="input-group">
+          <mat-form-field>
+            <mat-select disableRipple name="location" (selectionChange)="getnameParameterLocation()">
+              <mat-option *ngFor="let location of locationDropdown" [value]="location.name"
+                (click)="getlocationid(location.id)">{{location.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 mt-1">
+      <div class="form-group">
+        <label class="control-label">Building<b class="mandatory">*</b></label>
+        <div class="input-group">
+          <mat-form-field>
+            <mat-select disableRipple name="building" (selectionChange)="getnameParameterBuilding()">
+              <mat-option *ngFor="let building of buildingDropdown" [value]="building.name"
+                (click)="getBuildingid(building.id)">
+                {{building.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 mt-1">
+      <div class="form-group">
+        <label class="control-label">Floor<b class="mandatory">*</b></label>
+        <div class="input-group">
+          <mat-form-field>
+            <mat-select disableRipple name="floor" (selectionChange)="getnameParameterFloor()">
+              <mat-option *ngFor="let floor of floorDropdown" [value]="floor.name" (click)="forwardfloorid(floor.id)">
+                {{floor.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 mt-1 ">
+      <mat-form-field appearance="legacy">
+        <mat-label>Section Code <b class="mandatory">*</b></mat-label>
+        <input matInput placeholder="Section code" [(ngModel)]="addnewSection.sectionCode">
+        <mat-hint>Ex : 1st floor</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="mt-1 ">
+      <mat-form-field appearance="legacy">
+        <mat-label>Section name <b class="mandatory">*</b></mat-label>
+        <input matInput placeholder="Section name" [(ngModel)]="addnewSection.name">
+        <mat-hint>Ex : Quality section</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-6 mt-1">
+      <!-- <img  *ngIf="isImageUploaded" class="floorImage" [src]="imageUrl"><br>
+            <input type="file" accept="image/*" (change)="handleFileInput($event.target.files)" /> -->
+      <label class="control-label"> Map the section on the floor</label><br>
+      <!-- <img *ngIf="imageval" [src]="imageval" alt="" height="250px" width="250px"> -->
+      <button [disabled]="!redraw"  mat-stroked-button color="primary" class="mb-1 mr-1" (click)="deleteSelectedShape()">Clear & Redraw</button>
+      <svg id="drawArea" style="cursor: crosshair;">
+        <image *ngIf="addnewSection.floorId" id="sectionImg" href="" (load)="onImageLoad()" width="100%"
+          height="100%" />
+      </svg>
+
+    </div>
+    <!-- <div id="svgContainer" class="col-sm-6">
+            <label class="control-label" style="display: block;">{{'addFloor.floorOnMap' | translate}}</label>
+            <button [disabled]="!redraw"  mat-stroked-button color="primary" class="mb-1 mr-1" (click)="deleteSelectedShape($event)">Clear & Redraw</button>
+            <svg id="drawArea" style="cursor: crosshair;">
+                <image *ngIf="floor.buildingId" id="buildingImg" href="" 
+                    (load)='onImageLoad()' width="100%" />
+            </svg>
+        </div> -->
+  </div>
+
+  <!-- <ng-template #deleteTemplate>
+        <div class="col-md-12">
+            <h3>{{'addFloor.deleteMessage' | translate}}: "{{floor.name}}"</h3>
+        </div>
+        <div class="col-md-12">
+            <p style="color: brown;">{{'addFloor.note' | translate}}:</p>
+            <p>{{'addFloor.error' | translate}}</p>
+        </div>
+    </ng-template> -->
+</mat-dialog-content>
+<div class="line"></div>
+<mat-dialog-actions style="margin-bottom: 0px;" align="end">
+  <div class="col-md-12">
+    <b class="manditaory"></b>
+  </div>
+  <div class="col-md-12">
+    <button mat-button mat-dialog-close class="btn-cancel">Cancel</button>
+    <button mat-button class="btn-submit" (click)="postSectioninput()">Add</button>
+    <button mat-button class="btn-submit" (click)="updateSectionRow()">Update</button>
+  </div>
+</mat-dialog-actions>

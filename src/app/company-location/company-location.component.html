@@ -1,0 +1,411 @@
+<div class="addbackgroundcolor">
+    <div class="container-fluid row  m-0">
+        <div class="offset-lg-2 col-lg-10 col-12 col-md-10 offset-md-2 col-sm-12">
+            <div class="trolley-content-main">
+                <app-spinner></app-spinner>
+
+                <div class="small-heading">
+                    <p class="small" style="font-size:12px">Company location</p>
+                </div>
+                <div class="row">
+                    <div class="col setPosition">
+                        <h2 class="trolley-heading">Location</h2>
+                    </div>
+                </div>
+                <div class="location-content">
+                    <div class="add-location">
+                        <div class="heading">
+                            <h2>List of Location</h2>
+                            <p>System allows you to enter multiple Locations. For example, the Location may be address
+                                of the location. This means that you can better track each asset that is assigned to a
+                                given Location. A detailed Location makes it easy to find and count each asset.</p>
+                        </div>
+                        <div class="add-option d-flex justify-content-center row">                           
+                            <button mat-raised-button  (click)="openLocationDialog()" class="col-lg-2 col-md-8 col-sm-12 custom">ADD NEW LOCATION
+                                <img src="./assets/image/add.png" alt=""></button>
+                            <button mat-raised-button  (click)="openBuildingDialog()"class="col-lg-2 col-md-8 col-sm-12 custom">ADD NEW BUILDING
+                                <img src="./assets/image/add.png" alt=""></button>
+                            <button mat-raised-button  (click)="openFloorDialog()"class="col-lg-2 col-md-8 col-sm-12 custom">ADD NEW FLOOR <img
+                                    src="./assets/image/add.png" alt=""></button>
+                            <button mat-raised-button  (click)="openSectionDialog()"class="col-lg-2 col-md-8 col-sm-12 custom">ADD NEW SECTION <img
+                                    src="./assets/image/add.png" alt=""></button>
+                        </div>
+                    </div>
+                    <div class="tab">
+                        <mat-tab-group mat-align-tabs="center">
+                            <mat-tab label="Location">
+                                <div class="container">
+                                    <div class="card-body">
+                                        <div class="table-pagination">
+                                            <div class="mat-elevation-z8">
+                                                <table mat-table [dataSource]="dataSourcelocation">
+                                                    <ng-container matColumnDef="locationCode">
+                                                        <th mat-header-cell *matHeaderCellDef> Location Code </th>
+                                                        <td mat-cell *matCellDef="let element"> {{element.locationCode}}
+                                                        </td>
+                                                    </ng-container>
+                                                    <ng-container matColumnDef="name">
+                                                        <th mat-header-cell *matHeaderCellDef> Location </th>
+                                                        <td mat-cell *matCellDef="let element"> {{element.name}}
+                                                        </td>
+                                                    </ng-container>
+                                                    <ng-container matColumnDef="description">
+                                                        <th mat-header-cell *matHeaderCellDef> Description </th>
+                                                        <td mat-cell *matCellDef="let element"> {{element.description}}
+                                                        </td>
+                                                    </ng-container>
+                                                    <ng-container matColumnDef="address">
+                                                        <th mat-header-cell *matHeaderCellDef> Address </th>
+                                                        <td mat-cell *matCellDef="let element"> {{element.address}}
+                                                        </td>
+                                                    </ng-container>
+                                                    <ng-container matColumnDef="suite">
+                                                        <th mat-header-cell *matHeaderCellDef> Apt./Suite </th>
+                                                        <td mat-cell *matCellDef="let element"> {{element.suite}} </td>
+                                                    </ng-container>
+                                                    <ng-container matColumnDef="city">
+                                                        <th mat-header-cell *matHeaderCellDef> City </th>
+                                                        <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+                                                    </ng-container>
+                                                    <ng-container matColumnDef="state">
+                                                        <th mat-header-cell *matHeaderCellDef> State </th>
+                                                        <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+                                                    </ng-container>
+                                                    <ng-container matColumnDef="pincode">
+                                                        <th mat-header-cell *matHeaderCellDef> Postal Code </th>
+                                                        <td mat-cell *matCellDef="let element"> {{element.pincode}}
+                                                        </td>
+                                                    </ng-container>
+                                                    <ng-container matColumnDef="country">
+                                                        <th mat-header-cell *matHeaderCellDef> Country </th>
+                                                        <td mat-cell *matCellDef="let element"> {{element.country}}
+                                                        </td>
+                                                    </ng-container>
+                                                    <ng-container matColumnDef="action">
+                                                        <th mat-header-cell *matHeaderCellDef> Action </th>
+                                                        <td mat-cell *matCellDef="let element">
+
+                                                            <span class="mobile-label"></span>
+                                                            <a (click)="updateLocationrow(element.id)"><img
+                                                                    class="pointer-class"
+                                                                    src="./assets/image/edit.png"
+                                                                    class="icon-resize" alt=""></a>
+                                                            <a (click)="openModal(template, element.id, 'location')"><img
+                                                                    class="pointer-class"
+                                                                    src="./assets/image/delete.png"
+                                                                    class="icon-resize" alt=""></a>
+                                                            <ng-template #template>
+                                                                <div class="modal-body text-center">
+                                                                    <p>Are you sure to delete ?</p>
+                                                                    <button type="button" class="btn btn-default"
+                                                                        (click)="confirm()">Yes</button>
+                                                                    <button type="button" class="btn btn-primary"
+                                                                        (click)="decline()">No</button>
+                                                                </div>
+                                                            </ng-template>
+
+                                                        </td>
+                                                    </ng-container>
+                                                    <tr mat-header-row *matHeaderRowDef="columnsToDisplayLocation"></tr>
+                                                    <tr mat-row
+                                                        *matRowDef="let row; columns: columnsToDisplayLocation;"></tr>
+                                                </table>
+                                                <mat-paginator showFirstLastButtons [length]="locationpaginationlength.length"
+                                                    [pageSize]="locationpaginationlength.pageSize"
+                                                    [pageSizeOptions]="locationpaginationlength.pageSizeOptions"
+                                                    (page)="locationpagechange($event)"
+                                                    aria-label="Select page of periodic elements">
+                                                </mat-paginator>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-tab>
+                            <mat-tab label="Building">
+                                <div class="container">
+                                    <div class="card-body">
+                                        <div class="col-md-12 col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label">Location</label>
+                                                <div class="col-md-4">
+                                                    <div class="input-group">
+                                                        <mat-form-field>
+                                                            <mat-select disableRipple name="location"
+                                                                (selectionChange)="getnameParameterLocation()">
+                                                                <mat-option *ngFor="let location of locationDropdown"
+                                                                    [value]="location.name"
+                                                                    (click)="displaybuildingtable(location.id)">
+                                                                    {{location.name}}
+                                                                </mat-option>
+                                                            </mat-select>
+                                                        </mat-form-field>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="table-pagination">
+                                            <div class="mat-elevation-z8">
+                                                <table mat-table [dataSource]="dataSourcebuilding">
+                                                    <ng-container matColumnDef="buildingCode">
+                                                        <th mat-header-cell *matHeaderCellDef> Building Code </th>
+                                                        <td mat-cell *matCellDef="let element"> {{element.buildingCode}}
+                                                        </td>
+                                                    </ng-container>
+                                                    <ng-container matColumnDef="name">
+                                                        <th mat-header-cell *matHeaderCellDef> Building
+                                                        </th>
+                                                        <td mat-cell *matCellDef="let element"> {{element.name}}
+                                                        </td>
+                                                    </ng-container>
+                                                    <ng-container matColumnDef="action">
+                                                        <th mat-header-cell *matHeaderCellDef> Action </th>
+                                                        <td mat-cell *matCellDef="let element">
+                                                            <span class="mobile-label"></span>
+                                                            <a (click)="updateBuildingrow(element.id)"><img
+                                                                    src="./assets/image/edit.png"
+                                                                    class="icon-resize" alt=""></a>
+                                                            <a (click)="openModal(template, element.id, 'building')"><img
+                                                                    class="pointer-class"
+                                                                    src="./assets/image/delete.png"
+                                                                    class="icon-resize" alt=""></a>
+                                                            <ng-template #template>
+                                                                <div class="modal-body text-center">
+                                                                    <p>Are you sure to delete ?</p>
+                                                                    <button type="button" class="btn btn-default"
+                                                                        (click)="confirm()">Yes</button>
+                                                                    <button type="button" class="btn btn-primary"
+                                                                        (click)="decline()">No</button>
+                                                                </div>
+                                                            </ng-template>
+                                                        </td>
+                                                    </ng-container>
+                                                    <tr mat-header-row *matHeaderRowDef="columnsToDisplayBuilding"></tr>
+                                                    <tr mat-row
+                                                        *matRowDef="let row; columns: columnsToDisplayBuilding;"></tr>
+                                                </table>
+                                                <mat-paginator showFirstLastButtons [length]="buildingpaginationlength.length"
+                                                    [pageSize]="buildingpaginationlength.pageSize"
+                                                    [pageSizeOptions]="buildingpaginationlength.pageSizeOptions"
+                                                    (page)="buildingpagechange($event)"
+                                                    aria-label="Select page of periodic elements">
+                                                </mat-paginator>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-tab>
+                            <mat-tab label="Floor">
+                                <div class="container">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class=" col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">Location</label>
+                                                    <div class="col-md-4">
+                                                        <div class="input-group">
+                                                            <mat-form-field>
+                                                                <mat-select disableRipple name="location"
+                                                                    (selectionChange)="getnameParameterLocation()">
+                                                                    <mat-option
+                                                                        *ngFor="let location of locationDropdown"
+                                                                        [value]="location.name"
+                                                                        (click)="getlocationid(location.id)">
+                                                                        {{location.name}}
+                                                                    </mat-option>
+                                                                </mat-select>
+                                                            </mat-form-field>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class=" col-sm-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">Building</label>
+                                                    <div class="col-md-4">
+                                                        <div class="input-group">
+                                                            <mat-form-field>
+                                                                <mat-select disableRipple name="building"
+                                                                    (selectionChange)="getnameParameterBuilding()">
+                                                                    <mat-option
+                                                                        *ngFor="let building of buildingDropdown"
+                                                                        [value]="building.name"
+                                                                        (click)="displayfloortable(building.id)">
+                                                                        {{building.name}}
+                                                                    </mat-option>
+                                                                </mat-select>
+                                                            </mat-form-field>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="table-pagination">
+                                            <div class="mat-elevation-z8">
+                                                <table mat-table [dataSource]="dataSourcefloor">
+                                                    <ng-container matColumnDef="floorCode">
+                                                        <th mat-header-cell *matHeaderCellDef> Floor Code </th>
+                                                        <td mat-cell *matCellDef="let element"> {{element.floorCode}}
+                                                        </td>
+                                                    </ng-container>
+                                                    <ng-container matColumnDef="name">
+                                                        <th mat-header-cell *matHeaderCellDef> Floor Name </th>
+                                                        <td mat-cell *matCellDef="let element"> {{element.name}}
+                                                        </td>
+                                                    </ng-container>
+                                                    <ng-container matColumnDef="action">
+                                                        <th mat-header-cell *matHeaderCellDef> Action </th>
+                                                        <td mat-cell *matCellDef="let element">
+                                                            <span class="mobile-label"></span>
+                                                            <a (click)="updateFloorrow(element.id)"><img
+                                                                    src="./assets/image/edit.png"
+                                                                    class="icon-resize" alt=""></a>
+                                                            <a (click)="openModal(template, element.id, 'floor')"><img
+                                                                    class="pointer-class"
+                                                                    src="./assets/image/delete.png"
+                                                                    class="icon-resize" alt=""></a>
+                                                            <ng-template #template>
+                                                                <div class="modal-body text-center">
+                                                                    <p>Are you sure to delete ?</p>
+                                                                    <button type="button" class="btn btn-default"
+                                                                        (click)="confirm()">Yes</button>
+                                                                    <button type="button" class="btn btn-primary"
+                                                                        (click)="decline()">No</button>
+                                                                </div>
+                                                            </ng-template>
+                                                        </td>
+                                                    </ng-container>
+                                                    <tr mat-header-row *matHeaderRowDef="columnsToDisplayFloor"></tr>
+                                                    <tr mat-row *matRowDef="let row; columns: columnsToDisplayFloor;">
+                                                    </tr>
+                                                </table>
+                                                <mat-paginator showFirstLastButtons [length]="floorpaginationlength.length"
+                                                    [pageSize]="floorpaginationlength.pageSize"
+                                                    [pageSizeOptions]="floorpaginationlength.pageSizeOptions"
+                                                    (page)="floorpagechange($event)">
+                                                </mat-paginator>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-tab>
+                            <mat-tab label="Section">
+                                <div class="container">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class=" col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">Location</label>
+                                                    <div class="col-md-4">
+                                                        <div class="input-group">
+                                                            <mat-form-field>
+                                                                <mat-select disableRipple name="location"
+                                                                    (selectionChange)="getnameParameterLocation()">
+                                                                    <mat-option
+                                                                        *ngFor="let location of locationDropdown"
+                                                                        [value]="location.name"
+                                                                        (click)="getlocationid(location.id)">
+                                                                        {{location.name}}
+                                                                    </mat-option>
+                                                                </mat-select>
+                                                            </mat-form-field>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class=" col-sm-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">Building</label>
+                                                    <div class="col-md-4">
+                                                        <div class="input-group">
+                                                            <mat-form-field>
+                                                                <mat-select disableRipple name="building"
+                                                                    (selectionChange)="getnameParameterBuilding()">
+                                                                    <mat-option
+                                                                        *ngFor="let building of buildingDropdown"
+                                                                        [value]="building.name"
+                                                                        (click)="getbuildingid(building.id)">
+                                                                        {{building.name}}
+                                                                    </mat-option>
+                                                                </mat-select>
+                                                            </mat-form-field>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class=" col-sm-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">Floor</label>
+                                                    <div class="col-md-4">
+                                                        <div class="input-group">
+                                                            <mat-form-field>
+                                                                <mat-select disableRipple name="floor"
+                                                                    (selectionChange)="getnameParameterFloor()">
+                                                                    <mat-option *ngFor="let floor of floorDropdown"
+                                                                        [value]="floor.name"
+                                                                        (click)="displaysectiontable(floor.id)">
+                                                                        {{floor.name}}
+                                                                    </mat-option>
+                                                                </mat-select>
+                                                            </mat-form-field>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="table-pagination">
+                                            <div class="mat-elevation-z8">
+                                                <table mat-table [dataSource]="dataSourcesection">
+                                                    <ng-container matColumnDef="sectionCode">
+                                                        <th mat-header-cell *matHeaderCellDef> Section Code </th>
+                                                        <td mat-cell *matCellDef="let element"> {{element.sectionCode}}
+                                                        </td>
+                                                    </ng-container>
+                                                    <ng-container matColumnDef="name">
+                                                        <th mat-header-cell *matHeaderCellDef> Section Name </th>
+                                                        <td mat-cell *matCellDef="let element"> {{element.name}}
+                                                        </td>
+                                                    </ng-container>
+                                                    <ng-container matColumnDef="action">
+                                                        <th mat-header-cell *matHeaderCellDef> Action </th>
+                                                        <td mat-cell *matCellDef="let element">
+                                                            <span class="mobile-label"></span>
+                                                            <a (click)="updateSectionrow(element.id)"><img
+                                                                    src="./assets/image/edit.png"
+                                                                    class="icon-resize" alt=""></a>
+                                                            <a (click)="openModal(template, element.id, 'section')"><img
+                                                                    class="pointer-class"
+                                                                    src="./assets/image/delete.png"
+                                                                    class="icon-resize" alt=""></a>
+                                                            <ng-template #template>
+                                                                <div class="modal-body text-center">
+                                                                    <p>Are you sure to delete ?</p>
+                                                                    <button type="button" class="btn btn-default"
+                                                                        (click)="confirm()">Yes</button>
+                                                                    <button type="button" class="btn btn-primary"
+                                                                        (click)="decline()">No</button>
+                                                                </div>
+                                                            </ng-template>
+                                                        </td>
+                                                    </ng-container>
+                                                    <tr mat-header-row *matHeaderRowDef="columnsToDisplaySection"></tr>
+                                                    <tr mat-row *matRowDef="let row; columns: columnsToDisplaySection;">
+                                                    </tr>
+                                                </table>
+                                                <mat-paginator showFirstLastButtons [length]="sectionpaginationlength.length"
+                                                    [pageSize]="sectionpaginationlength.pageSize"
+                                                    [pageSizeOptions]="sectionpaginationlength.pageSizeOptions"
+                                                    (page)="sectionpagechange($event)">
+                                                </mat-paginator>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-tab>
+                        </mat-tab-group>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

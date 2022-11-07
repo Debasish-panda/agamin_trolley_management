@@ -1,0 +1,76 @@
+<h2 mat-dialog-title>Add Building</h2>
+<div class="line"></div>
+<mat-dialog-content class="mat-typography">
+  <div>
+    <div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label>Location</label>
+              <div class="input-group">
+                <mat-form-field>
+                  <mat-select disableRipple name="location" (selectionChange)="getnameParameterLocation()" [(value)]="selected_location_name">
+                    <mat-option name="option" *ngFor="let data of selectLocation" [value]="data.name"
+                      [(ngModel)]="data.name" (click)="forwardid(data.id)"> {{data.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 mt-1 ">
+            <mat-form-field appearance="legacy">
+              <mat-label>Building code <b class="mandatory">*</b></mat-label>
+              <input matInput placeholder="Building code" name="buildingcode" type="text"
+                [(ngModel)]="addnewBuilding.buildingCode">
+              <mat-hint>Ex : B/34</mat-hint>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-12 mt-1">
+            <mat-form-field appearance="legacy">
+              <mat-label>Building name <b class="mandatory">*</b></mat-label>
+              <input matInput placeholder="Building name" name="buildingname" type="text"
+                [(ngModel)]="addnewBuilding.name">
+              <mat-hint>Ex : Taj tower</mat-hint>
+            </mat-form-field>
+          </div>
+
+
+          <div class="col-sm-12 mt-2">
+            <label>Building image</label>
+            <!-- <img src="{{url}}" height="200"><br>
+            <input type="file" accept="image/*" (change)="previewFile($event)"/> -->
+            <input class="form-control rounded-0 shadow-none choosefile" #file type="file" accept='image/*'
+              id="formFile" (change)="changeAvatar(file.files)" />
+            <img [src]="avatarURL" *ngIf="avatarURL" height="200px" width="200px">
+          </div>
+        </div>
+        <div class="col-md-8">
+          <button mat-stroked-button color="primary" class="mb-1 mr-1" (click)="clearPath()">Clear & Redraw</button>
+          <!-- <google-map #mapel [center]="center" [zoom]="zoom">         
+          </google-map>   -->
+
+          <div #map style="width:550px;height:300px" [style.display]="visibleornot"></div>
+
+
+          <div #trialmap style="width:550px;height:300px"></div>
+          <!-- <div id="map"></div> -->
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</mat-dialog-content>
+<div class="line"></div>
+<mat-dialog-actions style="margin-bottom: 0px;" align="end">
+  <div class="col-md-12">
+    <b class="mandatory"></b>
+  </div>
+  <div class="col-md-12">
+    <button mat-button mat-dialog-close class="btn-cancel">Cancel</button>
+    <button mat-button class="btn-submit" (click)="postBuildingInput()">Add</button>
+    <button mat-button class="btn-submit" (click)="updateBuildingrow()">Updata</button>
+  </div>
+</mat-dialog-actions>

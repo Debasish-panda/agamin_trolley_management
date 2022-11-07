@@ -1,0 +1,292 @@
+#main-navbar {
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+  height: 9vh;
+  background-color: white;
+}
+
+.main {
+  margin-top: 9vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  position: fixed;
+  min-width: 16.5vw;
+  float: left;
+  height: 100vh;
+  background: linear-gradient(rgba(178, 12, 12, 0.3), rgba(176, 16, 16, 0.3)), url('../../assets/image/background.jpg') no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin: 0;
+  padding-top: 9vh;
+  top: 0;
+
+}
+
+
+/* .sidenav{
+  height: 91vh;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+} */
+
+.sidenav {
+  padding-top: 1px;
+}
+
+.arrow-icon-set {
+  width: 10px;
+  margin-left: 2px;
+}
+
+.side-navbar {
+  list-style: none;
+  padding: 5px 0px;
+}
+
+.side-navbar li {
+
+  border-bottom: 1px solid rgb(166, 166, 166);
+  font-size: 13px;
+  color: #fff;
+  font-weight: 400;
+}
+
+.container-fluid li {
+  font-size: 13px;
+}
+
+.side-navbar {
+  list-style: none;
+  padding: 5px 0px;
+}
+
+/* .side-navbar li:hover, */
+/* .active {
+    background-color: rgb(142, 37, 37);
+} */
+
+.side-navbar li a {
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.dropdownOpen {
+  padding-left: 0px;
+  padding-top: 0px;
+  border-top: 1px solid rgb(166, 166, 166);
+}
+
+.dropdownOpen li {
+  padding: 0px 0px;
+  border: 0px;
+  list-style-type: none;
+}
+
+.dropdownOpen li a {
+  padding: 10px 38px;
+  text-decoration: none;
+  color: #fff;
+}
+
+
+.divider {
+  padding: 10px 15px;
+  /* background-color: rgb(142, 37, 37); */
+  border-bottom: 1px solid rgb(166, 166, 166);
+  font-size: 14px;
+  color: #fff;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.logo-resize {
+  width: 24px;
+  padding-right: 6px;
+
+}
+
+.arrow-icon {
+  width: 15px;
+  float: right;
+  margin-right: 15px;
+  margin-top: 2px;
+}
+
+.active-icon {
+  width: 15px;
+  margin-right: 5px;
+  margin-top: -2px;
+}
+
+.arrow-icon,
+.nav-link.active.collapsed .arrow-icon {
+  transition: all 0.4s ease;
+  transform: rotateZ(-90deg);
+}
+
+.nav-link.active .arrow-icon {
+  transform: rotateZ(1deg);
+}
+
+.nav-link {
+  cursor: pointer;
+}
+
+.img-design {
+  height: 2.5rem;
+  width: 13rem;
+}
+
+.quonchlogo {
+  height: 2.8rem;
+  width: 6rem;
+  margin-right: 1.5rem;
+}
+
+.icon-set {
+  width: 23px;
+}
+
+.nav-item a {
+  color: black;
+  font-size: 13px;
+}
+
+
+
+
+ @media only screen and (max-width: 768px) {
+
+  .sidenav a span,
+  .img-design {
+    display: none;
+  }
+
+  .routerset {
+    transition: margin 0.3s ease;
+    margin-left: 9vw;
+  }
+
+  .sidebar {
+    transition: all 0.3s ease;
+    min-width: 2vw;
+    display: block;
+    z-index: 1;
+  }
+
+
+} 
+
+
+
+@media only screen and (max-height:515px) {
+  #main-navbar {
+    min-height: 45px;
+  }
+}
+
+
+/* trial side navbar */
+
+
+.sidenav a {
+  display: block;
+  text-decoration: none;
+  padding: 8px 1px 8px 16px;
+  color: white;
+  border-bottom: 1px solid rgb(166, 166, 166);
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.sidenav a:hover:not(.active) {
+  background-color: brown;
+}
+
+/* .caret {
+  transition: transform 1s;
+} */
+.rotate {
+  transform: rotate(-180deg);
+}
+
+.inside-element {
+  display: none;
+}
+
+.inside-element a {
+  padding-left: 30px;
+}
+
+.dropdown-item {
+  cursor: pointer;
+}
+
+.logoutcustom {
+  position: relative;
+  right: -11px;
+  background-color: #e6e6e6;
+
+}
+
+/* .dropdown-item:active {
+  background-color:  #e6e6e6;
+  } */
+
+
+.arrow-icon,
+.arrow-icon-last {
+  width: 15px;
+  float: right;
+  margin-right: 15px;
+  margin-top: 2px;
+  transform: rotateZ(1deg);
+}
+
+.arrow-icon-rotate,
+.arrow-icon-rotate-last {
+  transition: all 0.2s ease;
+  transform: rotateZ(90deg);
+}
+
+/* .arrow-icon {
+  transform: rotateZ(90deg);
+} */
+/* 
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+} */

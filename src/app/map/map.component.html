@@ -1,0 +1,154 @@
+<div class="addbackgroundcolor">
+
+    <div class="container-fluid row  m-0">
+        <div class="offset-lg-2 col-lg-10 col-12 col-md-10 offset-md-2 col-sm-12">
+            <app-spinner></app-spinner>
+            <div class="trolley-content-main">
+                <div class="small-heading">
+                    <p class="small" style="font-size:12px">Map</p>
+                </div>
+                <div class="row">
+                    <div class="col setPosition">
+                        <h2 class="trolley-heading">Location</h2>
+                    </div>
+                </div>
+                <div class="map-content">
+                    <mat-tab-group mat-align-tabs="center" #matgroup>
+                        <mat-tab label="Location">
+                            <div class="d-flex justify-content-center">
+                                <!-- <google-map height="400px" width="750px" [center]="center" [zoom]="zoom"
+                                    (mapClick)="moveMap($event)" (mapMousemove)="move($event)" class="maplocation">                                   
+                                </google-map> -->
+
+                                <div #map style="width:750px;height:400px"></div>
+
+                            </div>
+
+                        </mat-tab>
+                        <mat-tab label="Building">
+                            <div class="d-flex justify-content-center">
+                                <!-- <ng-container>Select the building in Location tab</ng-container> -->
+                                <!-- <google-map height="400px" width="750px" [center]="center" [zoom]="zoom"
+                                    (mapClick)="moveMap($event)" (mapMousemove)="move($event)" class="maplocation">
+                                    <map-polyline [path]="polypath"></map-polyline>
+                                    <map-polyline [path]="poly"></map-polyline>
+                                </google-map> -->
+
+                                <div #buildingmap id="buildingmap" style="width:750px;height:400px" [style.display]="visiblebuildingmap">
+                                </div>
+                                <div style="padding:40px">
+                                    <ng-container *ngIf="buildingcontainer">Select the Location in Location tab
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="Floor">
+                            <div class="insidetab d-flex justify-content-between">
+                                <div class="floor-image">
+                                    <h2 class="heading">Select The Floor</h2>
+                                    <!-- <svg id="drawArea" style="cursor: crosshair;">
+                                        <image *ngIf="bid" id="buildingImg" href="" width="100%" height="100%" />
+                                    </svg> -->
+                                    <svg id="buildingDrawArea"  style="width: 80%;margin-left: 10%;"  [style.display]="visiblefloor">
+                                        <image id="buildingImg" href="" (load)='onBuildingImageLoad()'
+                                            width="100%"/>
+                                    </svg>
+                                    <div class="popup" *ngIf="hidePopup">
+                                        <button class="closebtn" (click)="hidePopup=false">
+                                            <img src="../../assets/image/close.png" alt="">
+                                        </button>
+                                        <div class="clickoption">
+                                            <p><a>View Assets</a></p>
+                                            <p (click)="gotoSection()"><a>View Section</a></p>
+                                        </div>
+                                    </div>
+                                    <!-- <ng-container>Select the building in building tab</ng-container> -->
+                                    <div style="padding:20px">
+                                        <ng-container *ngIf="floorcontainer">Select the building in building tab
+                                        </ng-container>
+                                    </div>                                   
+                                </div>
+                                <div class="table-pagination">
+                                    <div class="mat-elevation-z0">
+                                        <table mat-table [dataSource]="dataSource">
+                                            <!-- assettagid Column -->
+                                            <ng-container matColumnDef="assettagid">
+                                                <th mat-header-cell *matHeaderCellDef> BLE Tag Id </th>
+                                                <td mat-cell *matCellDef="let element">{{element.assettagid}} </td>
+                                            </ng-container>
+
+                                            <!-- Description Column -->
+                                            <ng-container matColumnDef="description">
+                                                <th mat-header-cell *matHeaderCellDef> Description </th>
+                                                <td mat-cell *matCellDef="let element">{{element.description}}</td>
+                                            </ng-container>
+
+                                            <!-- action Column -->
+                                            <ng-container matColumnDef="action">
+                                                <th mat-header-cell *matHeaderCellDef> Action </th>
+                                                <td mat-cell *matCellDef="let element"></td>
+                                            </ng-container>
+                                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                        </table>
+
+                                        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                                            aria-label="Select page of periodic elements">
+                                        </mat-paginator>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="Section">
+                            <div class="insidetab d-flex justify-content-between">
+                                <div class="section-image">
+                                    <h2 class="heading">Select The Section</h2>
+                                    <svg id="floorDrawArea"  style="width: 80%;margin-left: 10%;" [style.display]="visiblesection">
+                                        <image id="floorImg" href="" (load)='onFloorImageLoad()'
+                                            width="100%" height="100%"/>
+                                    </svg>
+                                    <!-- <ng-container>Select the Floor in Floor tab</ng-container> -->   
+                                    <div style="padding:20px">
+                                        <ng-container *ngIf="sectioncontainer">Select the section in Floor tab
+                                        </ng-container>
+                                    </div>                                   
+                                </div>
+                                <div class="table-pagination">
+                                    <div class="mat-elevation-z0">
+                                        <table mat-table [dataSource]="dataSource">
+                                            <!-- assettagid Column -->
+                                            <ng-container matColumnDef="assettagid">
+                                                <th mat-header-cell *matHeaderCellDef> BLE Tag Id </th>
+                                                <td mat-cell *matCellDef="let element">{{element.assettagid}}  </td>
+                                            </ng-container>
+
+                                            <!-- Description Column -->
+                                            <ng-container matColumnDef="description">
+                                                <th mat-header-cell *matHeaderCellDef> Description </th>
+                                                <td mat-cell *matCellDef="let element">{{element.description}}</td>
+                                            </ng-container>
+
+                                            <!-- action Column -->
+                                            <ng-container matColumnDef="action">
+                                                <th mat-header-cell *matHeaderCellDef> Action </th>
+                                                <td mat-cell *matCellDef="let element"> </td>
+                                            </ng-container>
+                                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                        </table>
+
+                                        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                                            aria-label="Select page of periodic elements">
+                                        </mat-paginator>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

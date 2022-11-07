@@ -1,0 +1,268 @@
+<div class="container-fluid row m-0">
+    <div class="offset-lg-2 col-lg-10 col-12 col-md-10 offset-md-2 col-sm-12">
+
+        <div class="dashboard-content-main">
+            <div class="small-heading">
+                <p class="small" style="font-size:12px">Dashboard</p>
+            </div>
+
+            <div class="row">
+                <h2 class="col heading">
+                    Indo AutoTech - Dashboard</h2>
+            </div>
+            <!-- <div class="d-flex justify-content-around cards row">
+                <div class="card mb-3 col p-0">
+                    <div class="row g-0">
+                        <div class="col-md-3 custom sigmaicon">
+                            <div
+                                class="custom-background sigmacolor h-100 w-100 pe-3 pb-xl-0 pb-lg-0 pb-md-0 pb-3 pb-sm-3 text-center rounded-3">
+                                <img src="./assets/image/sigma.png"
+                                    class="img-fluid rounded-start bg-design logo-design" alt="...">
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body p-0">
+                                <p class="card-title text-center lead">Total Trolly</p>
+                                <p class="card-text text-center">0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 col p-0">
+                    <div class="row g-0">
+                        <div class="col-md-3 custom load-trolleyicon">
+                            <div
+                                class="custom-background load-trolleycolor h-100 w-100 pe-3 pb-xl-0 pb-lg-0 pb-md-0 pb-3 pb-sm-3 text-center rounded-3">
+                                <img src="../../assets/image/load-trolley.png"
+                                    class="img-fluid rounded-start logo-design" alt="repo">
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body p-0">
+                                <p class="card-title text-center lead">To Be Filled</p>
+                                <p class="card-text text-center">0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 col p-0">
+                    <div class="row g-0">
+                        <div class="col-md-3 custom trolleyicon">
+                            <div
+                                class="custom-background trolleycolor h-100 w-100 pe-3 pb-xl-0 pb-lg-0 pb-md-0 pb-3 pb-sm-3 text-center rounded-3">
+                                <img src="../../assets/image/trolley-item.png"
+                                    class="img-fluid rounded-start logo-design" alt="...">
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body p-0">
+                                <p class="card-title text-center lead">To Be Shipped</p>
+                                <p class="card-text text-center">0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 col p-0">
+                    <div class="row g-0">
+                        <div class="col-md-3 custom deliveryicon">
+                            <div
+                                class="custom-background deliverycolor h-100 w-100 pe-3 pb-xl-0 pb-lg-0 pb-md-0 pb-3 pb-sm-3 text-center rounded-3">
+                                <img src="../../assets/image/delivery.png" class="img-fluid rounded-start logo-design"
+                                    alt="...">
+
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body p-0">
+                                <p class="card-title text-center lead">To Be Received</p>
+                                <p class="card-text text-center">0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 col p-0">
+                    <div class="row g-0">
+                        <div class="col-md-3 custom cancelicon">
+                            <div
+                                class="custom-background cancelcolor h-100 w-100 pe-3 pb-xl-0 pb-lg-0 pb-md-0 pb-3 pb-sm-3 text-center rounded-3">
+                                <img src="../../assets/image/cancel.png" class="img-fluid rounded-start logo-design"
+                                    alt="...">
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body p-0">
+                                <p class="card-title text-center lead">Out Of Trace</p>
+                                <p class="card-text text-center">0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+
+            <!-- Cards -->
+
+            <div class="col-12 pt-4">
+                <div class="container ">
+                    <div class="row">
+                        <div class="col-lg-6 col-xl col-sm-10 col-md-6"
+                            [ngStyle]="{'visibility': display_RequestCards}">
+                            <div class="card mb-3">
+                                <div class="row ">
+                                    <div class="col-4 margineleft">
+                                        <div
+                                            class="h-100 w-100 pe-3 pb-xl-0 pb-lg-0 pb-md-0 pb-3 pb-sm-3 text-center rounded-2 sigmacolor">
+                                            <img src="./assets/image/sigma.png" alt="" class="customCardImage">
+                                        </div>
+                                    </div>
+                                    <div class="col ">
+                                        <div class="card-body p-0 ">
+                                            <p class="cardText">Total Trolley</p>
+                                            <p class="cardNumber ps-4">{{holddashboardvalue?.totalTrolley}}</p>                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-xl col-sm-10 col-md-6"
+                            [ngStyle]="{'visibility': display_RequestCards}">
+                            <div class="card mb-3" style="max-width: 540px;">
+                                <div class="row no-gutters">
+                                    <div class="col-4 margineleft">
+                                        <div
+                                            class="h-100 w-100  pe-3 pb-xl-0 pb-lg-0 pb-md-0 pb-3 pb-sm-3 text-center rounded-2 load-trolleycolor">
+                                            <img src="./assets/image/load-trolley.png" alt=""
+                                                class="customCardImage">
+                                        </div>
+                                    </div>
+                                    <div class="col-8 ">
+                                        <div class="card-body  p-0">
+                                            <p class="cardText">To Be Filled</p>
+                                            <p class="cardNumber ps-4">{{holddashboardvalue?.trolleyToBeFilled}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-xl col-sm-10 col-md-6"
+                            [ngStyle]="{'visibility': display_RequestCards}">
+                            <div class="form-group p-0 m-0">
+                                <div class="card mb-3" style="max-width: 540px;">
+                                    <div class="row no-gutters">
+                                        <div class="col-4 margineleft">
+                                            <div
+                                                class=" h-100 w-100  pe-3 pb-xl-0 pb-lg-0 pb-md-0 pb-3 pb-sm-3 text-center rounded-2 trolleycolor">
+                                                <img src="./assets/image/trolley-item.png" alt=""
+                                                    class="customCardImage">
+                                            </div>
+                                        </div>
+                                        <div class="col ">
+                                            <div class="card-body  p-0">
+                                                <p class="cardText">To Be Shipped</p>
+                                                <p class="cardNumber ps-4">{{holddashboardvalue?.trolleyToBeShipped}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-xl col-sm-10 col-md-6 "
+                            [ngStyle]="{'visibility': display_RequestCards}">
+                            <div class="form-group">
+                                <div class="card mb-3" style="max-width: 540px;">
+                                    <div class="row no-gutters">
+                                        <div class="col-4 margineleft">
+                                            <div
+                                                class="h-100 w-100  pe-3 pb-xl-0 pb-lg-0 pb-md-0 pb-3 pb-sm-3 text-center rounded-2 deliverycolor">
+                                                <img src="./assets/image/delivery.png" alt=""
+                                                    class="customCardImage">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="card-body p-0">
+                                                <p class="cardText">To Be Received</p>
+                                                <p class="cardNumber ps-4">{{holddashboardvalue?.trolleyTobeReceived}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-xl col-sm-10 col-md-6"
+                            [ngStyle]="{'visibility': display_RequestCards}">
+                            <div class="card mb-3" style="max-width: 540px;">
+                                <div class="row no-gutters">
+                                    <div class="col-4 margineleft">
+                                        <div
+                                            class="h-100 w-100  pe-2 pb-xl-0 pb-lg-0 pb-md-0 pb-3 pb-sm-3 text-center rounded-2 cancelcolor">
+                                            <img src="./assets/image/cancel.png" alt="" class="customCardImage">
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="card-body  p-0">
+                                            <p class="cardText">Out of Trace</p>
+                                            <p class="cardNumber ps-4">{{holddashboardvalue?.trolleyOutOfTrace}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <app-spinner></app-spinner>
+            <!-- barchart and pie chart -->
+
+            <div class="row">
+                <div class="bar-chart col-lg-7 col-md-12 col-sm-12">
+
+
+                    <!-- <div class="col-lg-9 col-md-9 col-sm-6"> -->
+                    <div>
+                        <p class="text-center"> Activity Overview</p>
+                        <canvas id="barChart"></canvas>
+                    </div>
+                    <!-- <div class="markcolor">
+                            <div class="d-flex">
+                                <div class="spanelement d-flex">
+                                    <div class="spantotaltrolley size"></div> Total trolley
+                                </div>
+                            </div>
+                            <div>
+                                <div class="spanelement d-flex">
+                                    <div class="spantobefilled size"></div>To be filled
+                                </div>
+                            </div>
+                            <div>
+                                <div class="spanelement d-flex">
+                                    <div class="spantobeshipped size"></div>To be shipped
+                                </div>
+                            </div>
+                            <div>
+                                <div class="spanelement d-flex">
+                                    <div class="spantobereceived size"></div>To be
+                                    received
+                                </div>
+                            </div>
+                            <div>
+                                <div class="spanelement d-flex">
+                                    <div class="spanoutoftrace size"></div>Out of trace
+                                </div>
+                            </div>
+                        </div> -->
+
+                </div>
+                <div class="piechart col-lg-4 col-md-8 col-sm-8">
+                    <h2 class="text-center">Summary</h2>
+                    <div class="pie-chart">
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

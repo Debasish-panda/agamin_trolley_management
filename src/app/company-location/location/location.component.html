@@ -1,0 +1,141 @@
+<h2 mat-dialog-title>Add Location</h2>
+<div class="line"></div>
+<mat-dialog-content class="mat-typography">
+    <div>
+        <div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="col-sm-12 mt-1">
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Location code <b class="mandatory">*</b></mat-label>
+                            <input matInput placeholder="Location Code" name="locationcode" type="text"
+                                [(ngModel)]="addnewlocation.locationCode">
+                            <mat-hint>Ex : BNG-123</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-12 mt-1 ">
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Location <b class="mandatory">*</b></mat-label>
+                            <input matInput placeholder="Location" name="location" type="text"
+                                [(ngModel)]="addnewlocation.name">
+                            <mat-hint>Ex : Bengalore</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-12 mt-1 ">
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Description</mat-label>
+                            <input matInput placeholder="Description" name="description" type="text"
+                                [(ngModel)]="addnewlocation.description">
+                            <mat-hint>Ex : Take right from tample</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-12 mt-1 ">
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Address</mat-label>
+                            <input matInput placeholder="Address" name="address" type="text"
+                                [(ngModel)]="addnewlocation.address">
+                            <mat-hint>Ex : 43/1st floor, 1st cross road..</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-12 mt-1 ">
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Apt./Suite</mat-label>
+                            <input matInput placeholder="Apt/Suit" name="apt" type="text"
+                                [(ngModel)]="addnewlocation.suite">
+                            <mat-hint>Ex :23/B</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-12 mt-1 ">
+                        <mat-form-field appearance="legacy">
+                            <mat-label>City</mat-label>
+                            <input matInput placeholder="City" name="city" type="text"
+                                [(ngModel)]="addnewlocation.city">
+                            <mat-hint>Ex : Bengalore</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-12 mt-1 ">
+                        <mat-form-field appearance="legacy">
+                            <mat-label>State</mat-label>
+                            <input matInput placeholder="State" name="state" type="text"
+                                [(ngModel)]="addnewlocation.state">
+                            <mat-hint>Ex : Karnataka</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-12 mt-1 ">
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Postal code</mat-label>
+                            <input matInput placeholder="Postal code" name="postal" type="number"
+                                [(ngModel)]="addnewlocation.pincode">
+                            <mat-hint>Ex : 123456</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-12 mt-1">
+                        <div class="form-group">
+                            <label>Country</label>
+                            <div class="input-group">
+                                <mat-form-field>
+                                    <mat-select disableRipple name="country" matNativeControl
+                                        [(value)]="addnewlocation.country">
+                                        <mat-option [(ngModel)]="addnewlocation.country" value="India">India
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <!-- <mat-form-field appearance="legacy">
+                            <mat-label>Country</mat-label>
+                            <input matInput placeholder="Placeholder" name="country" type="text" [(ngModel)]="addnewlocation.country">
+                            <mat-hint>Ex : India</mat-hint>
+                        </mat-form-field> -->
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <button mat-stroked-button color="primary" class="mb-1 mr-1" (click)="clearPath()">Clear & Redraw</button>
+                    
+                    <!-- <google-map [options]="mapOptions" height="300px" width="500px" [center]="center" [zoom]="zoom"
+                        (mapClick)="moveMap($event)" (mapMousemove)="move($event)" class="maplocation" >
+
+                        <map-marker [position]="marker.position"></map-marker>
+
+                    </google-map> -->
+                    <google-map height="300px" width="500px" [center]="center" [zoom]="zoom" class="maplocation"
+                        #myGoogleMap [options]="options" (mapClick)="eventHandler($event,'mapClick')"
+                        (mapDblclick)="eventHandler($event,'mapDblclick')" (mapDrag)="eventHandler($event,'mapDrag')"
+                        (mapDragend)="eventHandler($event,'mapDragend')"                       
+                        (positionChanged)="eventHandler($event,'marker_positionChanged')"
+                        (zoomChanged)="eventHandler($event,'zoomChanged')">
+
+                        <map-marker #markerElem="mapMarker"
+                        *ngFor="let marker of markers"
+                        [position]="marker.position"
+                        
+                        [title]="marker.address"
+                        [options]="marker.options"
+                        (mapClick)="openInfo(markerElem, marker.info)"></map-marker>
+                    </google-map>
+                    <!-- <div #map style="width:100%;height:450px"></div>                    -->
+                    <!-- <google-map  height="300px" width="500px" [center]="center" [zoom]="zoom"
+                        (mapClick)="moveMap($event)" (mapMousemove)="move($event)" class="maplocation" (mapClick)="placeMarker($event)">
+
+                        <map-marker></map-marker>
+
+                    </google-map> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+<div class="line"></div>
+<mat-dialog-actions style="margin-bottom: 0px;" align="end">
+    <div class="col-md-12">
+        <b class="mandatory"></b>
+    </div>
+    <div class="col-md-12">
+        <button mat-button mat-dialog-close class="btn-cancel">Cancel</button>
+        <button mat-button class="btn-submit" (click)="postCompanyLocationinput()">Save</button>
+        <button mat-button class="btn-submit" (click)="updateCompanyLocationrow()">Update</button>
+    </div>
+    
+</mat-dialog-actions>
+

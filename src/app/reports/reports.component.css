@@ -1,0 +1,92 @@
+.dashboard-content-main {
+  padding: 2px 20px 0px;
+}
+
+.small {
+  margin: 0 0 -20px;
+}
+
+table {
+  width: 100%;
+}
+
+.table {
+  padding: 14px;
+}
+
+.trolley-heading {
+  position: relative;
+  background-color: brown;
+  border-radius: 5px;
+  padding: 8px;
+  color: white;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.setPosition {
+  position: relative;
+  top: 36px;
+
+}
+
+.trolley-content {
+  background-color: white;
+  border-radius: 5px;
+  padding-top: 34px;
+}
+
+.search-field {
+  display: flex;
+  padding: 10px;
+}
+
+.search-field select {
+  width: 210px;
+  margin-left: 12px;
+}
+
+.icon-resize {
+  width: 16px;
+  cursor: pointer;
+}
+
+td,
+th {
+  /* text-align: center !important; */
+  vertical-align: middle !important;
+}
+
+.add-trolley-option {
+  background-color: brown;
+  font-size: 14px;
+  border: none;
+  padding: 6px 21px 6px 21px;
+  color: white;
+  border-radius: 2px;
+  transition: all ease 0.2s;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.search-button {
+  background-color: brown;
+  font-size: 14px;
+  width: 80px;
+  color: white;
+  transition: all ease 0.2s;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+  border: none;
+  margin-left: 10px;
+}
+
+.search-button:hover, .add-trolley-option:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
+}
+
+.form-select,
+.custom {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 13px;
+}

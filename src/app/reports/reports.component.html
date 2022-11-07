@@ -1,0 +1,113 @@
+<div class="container-fluid row addbackgroundcolor m-0">
+    <div class="offset-lg-2 col-lg-10 col-12 col-md-10 offset-md-2 col-sm-12">
+        <div class="trolley-content-main">
+            <app-spinner></app-spinner>
+            <div class="small-heading">
+                <p class="small" style="font-size:12px">Reports</p>
+            </div>
+            <div class="row">
+                <div class="col setPosition">
+                    <h2 class="trolley-heading">Reports</h2>
+                </div>
+            </div>
+
+            <div class="trolley-content">
+                <div class="search-field d-flex justify-content-between">
+                    <div class="row">
+                        <select class="form-select shadow-none" aria-label="Default select example" #trolleymodel
+                            (change)="gettrolleymodelvalue(trolleymodel.value)">
+                            <option class="custom" selected>Select Trolley Model</option>
+                            <option class="custom" *ngFor="let data of trolleyModelVal" [value]="data">{{data}}
+                            </option>
+                        </select>
+                        <select class="form-select shadow-none" aria-label="Default select example" #trolleyarea
+                            (change)="gettrolleyareavalue(trolleyarea.value)">
+                            <option class="custom" selected>Select Trolley Area</option>
+                            <option class="custom" *ngFor="let data of trolleyAreaVal">{{data}}</option>
+                        </select>
+                        <select class="form-select shadow-none" aria-label="Default select example" #trolleytypeofparts
+                            (change)="gettrolleytypeofpartsvalue(trolleytypeofparts.value)">
+                            <option class="custom" selected>Select Type of Parts</option>
+                            <option class="custom" *ngFor="let data of trolleyTypeofPartsVal">{{data}}</option>
+                        </select>
+                        <input type="button" value="Search" class="search-button" (click)="getTrolleyTrackingReport()">
+                    </div>
+
+                    <div>
+                        <button class="btn add-trolley-option" (click)="exportonbuttonclick()">Export</button>
+                    </div>
+                </div>
+                <div class="table">
+                    <div class="mat-elevation-z8">
+                        <table mat-table [dataSource]="dataSource" matSort #tableToConvert id="tableToConvert">
+
+                            <!-- Sl no Column -->
+                            <ng-container matColumnDef="id">
+                                <th mat-header-cell *matHeaderCellDef>Sl No. </th>
+                                <td mat-cell *matCellDef="let element; let i=index;"> {{i+1}} </td>
+                            </ng-container>
+
+                            <!-- Image Column -->
+                            <!-- <ng-container matColumnDef="image">
+                                <th mat-header-cell *matHeaderCellDef>Image </th>
+                                <td mat-cell *matCellDef="let element"> <img src="data:image/JPEG;base64,{{element.image}}" alt="" height="35px"> </td>
+                            </ng-container> -->
+
+                            <!-- BLE tag id Column -->
+                            <ng-container matColumnDef="bleTagId">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header>BLE Tag Id </th>
+                                <td mat-cell *matCellDef="let element"> {{element.bleTagId}} </td>
+                            </ng-container>
+
+                            <!-- Trolley type Column -->
+                            <!-- Insted of trolley type used model -->
+                            <ng-container matColumnDef="trolleyModel">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Trolley Model </th>
+                                <td mat-cell *matCellDef="let element"> {{element.trolleyModel}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="typeOfParts">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Type of Part </th>
+                                <td mat-cell *matCellDef="let element"> {{element.typeOfParts}} </td>
+                            </ng-container>
+
+
+
+                            <!-- Previous area Column -->
+                            <ng-container matColumnDef="previousArea">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Previous Area </th>
+                                <td mat-cell *matCellDef="let element"> {{element.previousArea}} </td>
+                            </ng-container>
+
+                            <!-- Current area Column -->
+                            <ng-container matColumnDef="currentArea">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Current Area </th>
+                                <td mat-cell *matCellDef="let element"> {{element.currentArea}} </td>
+                            </ng-container>
+
+                            <!-- Date and time Column -->
+                            <ng-container matColumnDef="arrivalTime">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Date & Time of Arrival </th>
+                                <td mat-cell *matCellDef="let element"> {{element.arrivalTime | date : 'short':'UTC' }} </td>
+                            </ng-container>
+
+                            <!-- <ng-container matColumnDef="findonmap">
+                                <th mat-header-cell *matHeaderCellDef> Find On Map </th>
+                                <td mat-cell *matCellDef="let element"> {{element.findonmap}} </td>
+                            </ng-container> -->
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+
+                        <mat-paginator #trolleyPage [pageSizeOptions]="paginationlength.pageSizeOptions"
+                            showFirstLastButtons [pageSize]="paginationlength.pageSize"
+                            [length]="paginationlength.length" (page)="pagechange($event)"
+                            aria-label="Select page of periodic elements">
+                        </mat-paginator>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

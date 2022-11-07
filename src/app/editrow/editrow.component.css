@@ -1,0 +1,92 @@
+.trolley-heading {
+    position: relative;
+    background-color: brown;
+    border-radius: 5px;
+    padding: 8px;
+    color: white;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .small{
+    margin:0 0 -20px;
+  }
+  
+  .setPosition {
+    position: relative;
+    top: 36px;
+  
+  }
+  
+  .trolley-content {
+    background-color: white;
+    border-radius: 5px;
+    padding-top: 34px;
+  }
+  
+  .trolley-content input[type="text"] {
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+  }
+  
+  .trolley-content label {
+    font-weight: bold;
+    color: rgb(64, 64, 64);
+  }
+  
+  .trolley-content input,
+  label,
+  button {
+    font-size: 13px;
+  }
+  
+  .form-addnewtrolley {
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    margin: 20px 10px 10px 10px;
+    padding: 30px;
+  }
+  
+  .save-button {
+    background-color: brown;
+  
+  }
+  
+  .btn {
+    width: 90px;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+  }
+  
+  .btn a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .qrcode {
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    padding: 4px;
+  }
+  p{
+    text-align: center;
+    width:220px;
+  }
+  
+  .qrcode img {
+    margin-left: 20px;
+    height:70px;
+    width:70px;
+  }
+  
+  .form-rows {
+    margin-top: 15px;
+  }
+  .choosefile {
+    appearance: none;
+    cursor: default;
+    width: 205px;
+  }
+  .resize-content{
+    margin-left: -40px;
+  }
+  
+  input{
+    max-width: 200px;
+  }

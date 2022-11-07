@@ -1,0 +1,81 @@
+<h2 mat-dialog-title>Add Floor</h2>
+<div class="line"></div>
+<mat-dialog-content class="mat-typography">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label class="control-label">Location<b class="mandatory">*</b></label>
+        <div class="input-group">
+          <mat-form-field>
+            <mat-select disableRipple name="location" (selectionChange)="getnameParameterLocation()"[(value)]="selected_location_name">
+              <mat-option *ngFor="let location of locationDropdown" [value]="location.name"
+                (click)="getlocationid(location.id)" >{{location.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label class="control-label">Building<b class="mandatory">*</b></label>
+        <div class="input-group">
+          <mat-form-field>
+            <mat-select disableRipple name="building" (selectionChange)="getnameParameterBuilding()" [(value)]="selected_building_name">
+              <mat-option *ngFor="let building of buildingDropdown" [value]="building.name"
+                (click)="forwardid(building.id)">
+                {{building.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 mt-1 ">
+      <mat-form-field appearance="legacy">
+        <mat-label>Floor code <b class="mandatory">*</b></mat-label>
+        <input matInput placeholder="Floor code" [(ngModel)]="addnewFloor.floorCode">
+        <mat-hint>Ex : B12</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-6 mt-1 ">
+      <mat-form-field appearance="legacy">
+        <mat-label>Floor name <b class="mandatory">*</b></mat-label>
+        <input matInput placeholder="Floor name" [(ngModel)]="addnewFloor.name">
+        <mat-hint>Ex : 1st floor</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-6 mt-2">
+      <!-- <img  *ngIf="isImageUploaded" class="floorImage" [src]="imageUrl"><br>
+            <input type="file" accept="image/*" (change)="handleFileInput($event.target.files)" /> -->
+      <label class="control-label"> Floor image</label>
+
+      <input class="form-control rounded-0 shadow-none choosefile" #file type="file" accept='image/*' id="formFile"
+        (change)="changeAvatar(file.files)" />
+      <img [src]="avatarURL" *ngIf="avatarURL" height="200px" width="200px">
+    </div>
+
+    <div class="col-sm-6 mt-2">
+      <label class="control-label">Map the floor on the building</label><br>
+      <!-- image<img *ngIf="imageval" [src]="imageval" alt="" height="250px" width="250px"> -->
+      <button [disabled]="!redraw"  mat-stroked-button color="primary" class="mb-1 mr-1" (click)="deleteSelectedShape()">Clear & Redraw</button>
+
+      <svg id="drawArea" style="cursor: crosshair;">
+        <image *ngIf="addnewFloor.buildingId" id="buildingImg" href="" (load)='onImageLoad()' width="100%"
+          height="100%" />
+      </svg>
+    </div>
+
+  </div>
+</mat-dialog-content>
+<div class="line"></div>
+<mat-dialog-actions style="margin-bottom: 0px;" align="end">
+  <div class="col-md-12">
+    <b class="mandatory"></b>
+  </div>
+  <div class="col-md-12">
+    <button mat-button mat-dialog-close class="btn-cancel">Cancel</button>
+    <button mat-button class="btn-submit" (click)="postFloorinput()">Add</button>
+    <button mat-button class="btn-submit" (click)="updateFloorRow()">Update</button>
+  </div>
+</mat-dialog-actions>

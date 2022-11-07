@@ -1,0 +1,60 @@
+i {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+mat-dialog-content{
+   max-height: 40vh;
+}
+mat-form-field{
+    width: 100%;
+}
+.form-control{
+    background: no-repeat bottom,center calc(100% - 1px);
+    background-size: 0 100%,100% 100%;
+    border: 0;
+    outline: 0;
+    height: 36px;
+    transition: background 0s ease-out;
+    padding-left: 0;
+    padding-right: 0;
+    border-radius: 0;
+    font-size: 14px;
+    background-image: linear-gradient(0deg,#90caf9 2px,rgba(144,202,249,0) 0),linear-gradient(0deg,#d2d2d2 1px,hsla(0,0%,82%,0) 0);
+}
+
+h2 {
+    text-transform: capitalize;
+    font-size: 18px;
+    border-radius: 5px 5px 0 0;
+    font-weight: 400;
+    color: #FF5428;
+    width: 70vw;
+}
+
+label {
+    color: black;
+}
+
+
+
+.line {
+    border-top: 1px solid rgb(0, 0, 0);
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.mandatory {
+    color: red;
+    margin-left: 05px;
+}
+
+
+.center {
+    top: 50%;
+    left: 50%;
+}
+
+ google-map{
+    height: 500px;
+    width: 100%;
+}

@@ -1,0 +1,147 @@
+.dashboard-content-main {
+    padding: 2px 20px 0px;
+}
+
+.heading {
+    background-color: brown;
+    font-size: 20px;
+    padding: 8px;
+    color: white;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.set-style {
+    background-color: rgba(239, 197, 113, 255);
+}
+/* 
+.cards {
+    margin: 20px 0 0 0;
+}
+
+.card-title {
+    font-size: 18px;
+}
+
+.cards .card {
+    margin-right: 10px;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+
+} */
+.totalReqHover {
+    cursor: pointer;
+    /* max-width: 540px; */
+}
+.customCardImage {
+    width: 40px;
+    padding: 7px;
+    margin-top: 11px;
+    margin-left: 7px;
+    border-radius: 50%;   
+    background-color: rgb(255, 255, 255, 0.2); 
+}
+.margineleft{
+    padding-right: 0px;
+}
+.cardText {
+    font-size:0.96rem;
+    /* padding-top: 0.625rem; */
+    /* text-align: center; */
+    /* text-align: left !important; */
+}
+.cardNumber {
+    font-size:1.375rem;
+    font-weight: 100;
+    /* text-align: center; */
+}
+.card{
+    border-width: 0px;
+}
+/* .logo-design{
+    background-color:rgba(239,98,98,255);
+    padding: 10px;
+    ;
+} */
+.bar-chart {
+    padding: 27px;
+    border: 1px solid rgb(166, 166, 166);
+    background-color: white;
+    margin-left: 10px;
+}
+
+
+/* .pie-chart {
+    width: 23vw;
+    height: 23vh;
+    margin-left: 80px;
+} */
+/* 
+.custom {
+    padding: 7px;
+    border-radius: 3px;
+}
+
+.custom-background {
+    border-radius: 50%;
+}
+
+.custom img {
+    width: fit-content;
+    height: fit-content;
+    padding: 6px;
+} */
+
+.sigmaicon, .spantotaltrolley {
+    background-color: rgb(255, 204, 102);
+}
+
+.load-trolleyicon, .spantobefilled {
+    background-color: rgb(128, 212, 255);
+}
+
+.trolleyicon, .spantobeshipped {
+    background-color: rgb(102, 140, 255);
+}
+.deliveryicon, .spantobereceived{
+    background-color: rgb(224, 102, 255);
+}
+.cancelicon, .spanoutoftrace{
+    background-color: rgba(239,98,98,255);
+    ;
+}
+
+.sigmacolor {
+    background-color: rgb(255, 221, 153);
+}
+
+.load-trolleycolor {
+    background-color: rgb(170, 225, 252);
+}
+
+.trolleycolor {
+    background-color: rgb(144, 171, 252);
+}
+.deliverycolor{
+    background-color: rgb(230, 151, 250);
+}
+.cancelcolor{
+    background-color:rgb(251, 137, 175);
+}
+
+.size{
+    height: 12px;
+    width: 30px;
+    margin: 5px;
+    
+}
+/* span{
+    text-align: center;
+} */
+
+/* .spanelement{
+    padding: 4px;
+    width: 150px;
+    font-size: 12px;
+    color: rgb(128, 128, 128);
+} */
