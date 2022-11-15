@@ -10,18 +10,18 @@
                 </div>
                 <div class=" trolley-content">
                     <form class="form-addnewtrolley" [formGroup]="addtrolley">
-                        <div class="form-rows d-flex justify-content-around">
-                            <div class="mb-3">
+                        <div class="row d-flex p-3">
+                            <div class="col-lg-4 col-xl col-sm-4 col-md-4">
                                 <label for="trolleynumber" class="form-label">Trolley Number</label>
-                                <input type="text" class="form-control rounded-1"
-                                    id="trolleynumber" [(ngModel)]="addnewtrolley.trolleyNumber"
-                                    placeholder="Trolley Number" formControlName="trolleynumber" required>
+                                <input type="text" class="form-control rounded-1" id="trolleynumber"
+                                    [(ngModel)]="addnewtrolley.trolleyNumber" placeholder="Trolley Number"
+                                    formControlName="trolleynumber" required>
                                 <span class="text-danger"
                                     *ngIf="(submitformControl['trolleynumber'].touched || submitted) && !submitformControl['trolleynumber'].value">
                                     Trolley number is required
                                 </span>
                             </div>
-                            <div class="mb-3">
+                            <div class="col-lg-4 col-xl col-sm-4 col-md-4">
                                 <label for="trolleyname" class="form-label">Trolley Name</label>
                                 <input type="text" class="form-control rounded-1" id="trolleyname"
                                     formControlName="trolleyname" placeholder="Trolley Name" required
@@ -31,11 +31,11 @@
                                     Trolley name is required
                                 </span>
                             </div>
-                            <div class="mb-3">
+                            <div class="col-lg-4 col-xl col-sm-4 col-md-4">
                                 <label for="trolleycapacity" class="form-label">Trolley Capacity</label>
                                 <input type="text" class="form-control rounded-1" id="trolleycapacity"
                                     formControlName="trolleycapacity" [(ngModel)]="addnewtrolley.partsCapacity"
-                                     placeholder="Trolley Capacity" required>
+                                    placeholder="Trolley Capacity" required>
                                 <span class="text-danger"
                                     *ngIf="(submitformControl['trolleycapacity'].touched || submitted) && !submitformControl['trolleycapacity'].value">
                                     Trolley capacity is required
@@ -43,41 +43,25 @@
                             </div>
 
                         </div>
-                        <div class="form-rows d-flex justify-content-around">
-                            <div class="mb-3">
+                        <div class="row d-flex p-3">
+                            <div class="col-lg-4 col-xl col-sm-4 col-md-4">
                                 <label for="trolleytype" class="form-label">Trolley Model</label>
                                 <input type="text" class="form-control rounded-1" id="trolleytype"
                                     formControlName="trolleytype" placeholder="Trolley Model" required
-                                    [(ngModel)]="addnewtrolley.trolleyModel" >
+                                    [(ngModel)]="addnewtrolley.trolleyModel">
                                 <span class="text-danger"
                                     *ngIf="(submitformControl['trolleytype'].touched || submitted) && !submitformControl['trolleytype'].value">
                                     Trolley model is required
                                 </span>
                             </div>
-                            <div class="mb-3">
+                            <div class="col-lg-4 col-xl col-sm-4 col-md-4">
                                 <label for="trolleycolor" class="form-label">Trolley Color</label><br>
-                                <!-- <input type="text" class="form-control rounded-1" id="trolleycolor"
-                                    formControlName="trolleycolor" placeholder="Trolley Color" required
-                                    [(ngModel)]="addnewtrolley.trolleyColour" [formControl]="trolleycolor"> -->
-                                <!-- <input [style.background]="colorList[0].value" [(colorPicker)]="colorList[0].value"
-                                    [cpOKButton]="true" [cpOKButtonText]="'Select'" [cpCancelButton]="true"
-                                    [cpSaveClickOutside]="false" [cpDisableInput]="false" [cpAlphaChannel]="'disabled'"
-                                    [cpOutputFormat]="'hex'" [cpPresetColors]="presetValues"
-                                    [cpAddColorButton]="true" type="text" class="form-control rounded-1" id="trolleycolor"
-                                    formControlName="trolleycolor" placeholder="Trolley Color" required
-                                    [(ngModel)]="addnewtrolley.trolleyColour" [formControl]="trolleycolor" (Change)="getcolorval(colorList[0].value)"/> -->
-                                    <!-- <input type="color" #colorval id="selectcolor" (change)="getcolorval(colorval.value)"><br> -->
-                                <!-- <span class="text-danger"
-                                    *ngIf="(submitformControl['trolleycolor'].touched || submitted) && colorval.value!=null">
-                                    Trolley Color is required
-                                </span> -->
-                                <select name="" id="" *ngFor="let colors of colorsList" class="radius">
-                                    <option value="" disabled selected>-Select Color-</option>
-                                    <option value="">{{colors}} <span style="background-color:red; padding: 2px;"></span></option>
-                                </select>
+                                    <select name="" id="" #selectedColor  (change)="getcolorval(selectedColor.value)">
+                                        <option value="" selected disabled>Select color</option>
+                                        <option *ngFor="let data of colorsList" value="{{data}}" [style.backgroundColor]="data">{{data}}</option>
+                                    </select>
                             </div>
-    <div>Working fine</div>
-                            <div class="mb-3">
+                            <div class="col-lg-4 col-xl col-sm-4 col-md-4">
                                 <label for="department" class="form-label">Department</label>
                                 <input type="text" class="form-control rounded-1" id="department"
                                     formControlName="department" placeholder="Department" required
@@ -88,27 +72,26 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="form-rows d-flex resize-content">
-                            <div class="mb-3">
+                        <div class="row d-flex p-3">
+                            <div class="col-lg-4  col-sm-4 col-md-4">
                                 <label for="bletagid" class="form-label">BLE Tag Id</label>
                                 <input type="text" class="form-control rounded-1" id="bletagid"
                                     formControlName="bletagid" placeholder="BLE Tag Id" required
-                                    [(ngModel)]="addnewtrolley.bleTagId" >
+                                    [(ngModel)]="addnewtrolley.bleTagId">
                                 <span class="text-danger"
                                     *ngIf="(submitformControl['bletagid'].touched || submitted) && !submitformControl['bletagid'].value">
                                     BLE tag id is required
                                 </span>
                             </div>
-                            <div class="mb-3  resize-inside-content">
+                            <div class="col-lg-4 col-sm-4 col-4-4">
                                 <label for="formFile" class="form-label">Add photo</label>
-                                <!-- <input class="form-control rounded-0  choosefile" type="file" id="formFile"  accept="image" (change)="previewFile($event)">
-                                <img src="{{url}}" alt="" style="height: 80px;"> -->
+
                                 <input class="form-control rounded-1  choosefile" #file type="file"
                                     formControlName="formFile" accept='image/*' id="formFile"
-                                    (change)="changeAvatar(file.files)"  required />
+                                    (change)="changeAvatar(file.files)" required />
                                 <img [src]="avatarURL" *ngIf="avatarURL" width="50px">
                             </div>
-                        </div>                        
+                        </div>
                         <div class="form-button d-flex justify-content-center">
                             <button class="btn save-button m-4 rounded-1" type="submit"
                                 (click)="addNewTrolleyApi()"><a>Save</a> </button>

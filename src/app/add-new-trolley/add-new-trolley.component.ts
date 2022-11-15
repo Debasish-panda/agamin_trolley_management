@@ -11,7 +11,7 @@ import { GetColorName } from 'hex-color-to-color-name';
 
 @Component({
   selector: 'app-add-new-trolley',
-  templateUrl: './trolley.html',
+  templateUrl: './add-new-trolley.component.html',
   styleUrls: ['./add-new-trolley.component.css']
 })
 export class AddNewTrolleyComponent implements OnInit {
