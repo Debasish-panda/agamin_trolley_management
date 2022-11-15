@@ -1,7 +1,7 @@
 <div class="backgroundsetup addbackgroundcolor">
-    <nav id="main-navbar" class="navbar navbar-expand navbar-light fixed-top">
+    <nav id="main-navbar" class="navbar navbar-expand navbar-light fixed-top w-100">
         <div class="container-fluid">
-            <a class="navbar-brand" routerLink="/dashboard/dashboard-content"><img src="./assets/image/Qonch logo.png"
+            <a class="navbar-brand"><img src="./assets/image/sidebar_menu.png" alt="Sidebar menu" class="sidebar_menu" id="sidebarCollapse"> <img src="./assets/image/Qonch logo.png"
                     alt="" class="quonchlogo">
                 <img src="./assets/image/indologo.png" alt="indo" class="img-design">
             </a>
@@ -35,11 +35,12 @@
     </main>
 
 
+
     
-        <div class="sidebar">
-            <div class="sidenav">
+        <div class="sidebar" id="sidebar">
+            <div class="sidenav" >
                 <a routerLink="/dashboard/dashboard-content" routerLinkActive="active" class=""><img
-                        src="./assets/image/dashboard.png" alt="" class="logo-resize"><span> Dahboard</span></a>
+                        src="./assets/image/dashboard.png" alt="" class="logo-resize"><span> Dashboard</span></a>
                 <a (click)="toggleelement()" class="nav-link" routerLinkActive="active"><img
                         src="./assets/image/trolley.png" class="logo-resize" alt=""><span>Trolleys </span><img
                         class="arrow-icon" src="./assets/image/arrowimg.png">
@@ -66,9 +67,6 @@
             </div>
 
         </div>
-    
-
-    <!-- <button class="btn btn-primary" id="menu-toggle">Toggle Menuuu</button> -->
     <div class="routerset">
         <router-outlet></router-outlet>
     </div>
@@ -76,32 +74,32 @@
 
 <!-- <ul class="side-navbar">
             <li class="sidebar-dashboard"><a routerLink="/dashboard/dashboard-content" class="nav-link"><img
-                        src="../../assets/image/dashboard.png" alt="" class="logo-resize"><span>Dashboard</span></a>
+                        src="./assets/image/dashboard.png" alt="" class="logo-resize"><span>Dashboard</span></a>
             </li>
             <li class="sidebar-dropdown"><a class="nav-link" data-bs-toggle="collapse"
                     data-bs-target="#collapseWidthExample" (click)="toggleelement()"><img
-                        src="../../assets/image/trolley.png" class="logo-resize" alt=""><span>Trolleys</span> <span
+                        src="./assets/image/trolley.png" class="logo-resize" alt=""><span>Trolleys</span> <span
                         class="arrow right"></span></a>
                 <ul class="dropdownOpen" id="collapseWidthExample"
                     [ngStyle]="displayNavbar == '0' ? {'display': 'block'} : {'display': 'none'}">
-                    <li><a routerLink="trolleys" class="nav-link"><img src="../../assets/image/bluetooth.png" alt=""
+                    <li><a routerLink="trolleys" class="nav-link"><img src="./assets/image/bluetooth.png" alt=""
                                 class="logo-resize"><span>Trolleys</span></a></li>
-                    <li><a routerLink="addtrolley" class="nav-link"><img src="../../assets/image/load-trolley.png"
+                    <li><a routerLink="addtrolley" class="nav-link"><img src="./assets/image/load-trolley.png"
                                 alt="" class="logo-resize"><span>Add Trolleys</span></a></li>
                 </ul>
             </li>
             <li class="sidebar-dropdown"><a class="nav-link" data-bs-toggle="collapse"
                     data-bs-target="#collapseWidthExample" (click)="togglesetup()"><img
-                        src="../../assets/image/setup.png" class="logo-resize" alt=""><span>Setup</span> <span
+                        src="./assets/image/setup.png" class="logo-resize" alt=""><span>Setup</span> <span
                         class="arrow right"></span></a>
                 <ul class="dropdownOpen" id="collapseWidthExample"
                     [ngStyle]="displaysetupNavbar == '0' ? {'display': 'block'} : {'display': 'none'}">
-                    <li><a routerLink="company-location" class="nav-link"><img src="../../assets/image/add-location.png"
+                    <li><a routerLink="company-location" class="nav-link"><img src="./assets/image/add-location.png"
                                 alt="" class="logo-resize"><span>Company Location</span></a></li>
                 </ul>
             </li>
             <li class="sidebar-dashboard"><a routerLink="reports" class="nav-link"><img
-                        src="../../assets/image/report.png" alt="" class="logo-resize"><span>Reports</span></a></li>
+                        src="./assets/image/report.png" alt="" class="logo-resize"><span>Reports</span></a></li>
         </ul> -->
 
 
@@ -113,21 +111,21 @@
 <!-- <nav id="main-navbar" class="navbar navbar-expand navbar-light fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" routerLink="">
-                <img src="../../assets/image/indologo.png" alt="indo" class="img-design">
+                <img src="./assets/image/indologo.png" alt="indo" class="img-design">
             </a>
             <ul class=" navbar-nav collapse ms-auto d-flex flex-row">
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center" routerLink="map"> <img
-                            src="../../assets/image/address.png" alt="" class="icon-set">Maps</a>
+                            src="./assets/image/address.png" alt="" class="icon-set">Maps</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center" routerLink=""> Alerts<img
-                            src="../../assets/image/notification.png" alt="" class="icon-set"></a>
+                            src="./assets/image/notification.png" alt="" class="icon-set"></a>
                 </li>
                 <li class="nav-item dropdown show">
                     <a class="nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown"
                         id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false" (click)="togglelogout()">
-                        <img src="../../assets/image/profile-avatar.png" class="icon-set" alt="">
+                        <img src="./assets/image/profile-avatar.png" class="icon-set" alt="">
                     </a>
                     <div class="dropdown-menu logoutcustom" aria-labelledby="dropdownMenuLink"
                         [ngStyle]="logout == '0' ? {'display': 'block'} : {'display': 'none'}">
@@ -144,27 +142,27 @@
    <div class="sidebar">
         <div class="sidenav">
             <a routerLink="/dashboard/dashboard-content" routerLinkActive="active" class=""><img
-                    src="../../assets/image/dashboard.png" alt="" class="logo-resize">Dahboard</a>
+                    src="./assets/image/dashboard.png" alt="" class="logo-resize">Dahboard</a>
             <a (click)="toggleelement()" class="nav-link" routerLinkActive="active"><img
-                    src="../../assets/image/trolley.png" class="logo-resize" alt="">Trolleys <img class="arrow-icon"
-                    src="../../assets/image/arrowimg.png">
+                    src="./assets/image/trolley.png" class="logo-resize" alt="">Trolleys <img class="arrow-icon"
+                    src="./assets/image/arrowimg.png">
             </a>
             <div class="inside-element" [ngStyle]="displayNavbar == '0' ? {'display': 'block'} : {'display': 'none'}">
-                <a routerLink="trolleys" routerLinkActive="active"><img src="../../assets/image/bluetooth.png" alt=""
+                <a routerLink="trolleys" routerLinkActive="active"><img src="./assets/image/bluetooth.png" alt=""
                         class="logo-resize">Trolley Movements</a>
-                <a routerLink="addtrolley" routerLinkActive="active"><img src="../../assets/image/load-trolley.png"
+                <a routerLink="addtrolley" routerLinkActive="active"><img src="./assets/image/load-trolley.png"
                         alt="" class="logo-resize">List of
                     Trolley</a>
             </div>
             <a (click)="togglesetup()" class="nav-link-last" routerLinkActive="active"><img
-                    src="../../assets/image/setup.png" class="logo-resize" alt="">Setup <img class="arrow-icon-last"
-                    src="../../assets/image/arrowimg.png"></a>
+                    src="./assets/image/setup.png" class="logo-resize" alt="">Setup <img class="arrow-icon-last"
+                    src="./assets/image/arrowimg.png"></a>
             <div class="inside-element"
                 [ngStyle]="displaysetupNavbar == '0' ? {'display': 'block'} : {'display': 'none'}">
                 <a routerLink="company-location" routerLinkActive="active"><img
-                        src="../../assets/image/add-location.png" alt="" class="logo-resize">Company Location</a>
+                        src="./assets/image/add-location.png" alt="" class="logo-resize">Company Location</a>
             </div>
-            <a routerLink="reports" routerLinkActive="active"><img src="../../assets/image/report.png" alt=""
+            <a routerLink="reports" routerLinkActive="active"><img src="./assets/image/report.png" alt=""
                     class="logo-resize">reports</a>
         </div>
 

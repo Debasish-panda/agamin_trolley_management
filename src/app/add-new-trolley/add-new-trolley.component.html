@@ -1,5 +1,5 @@
 <div class="container-fluid row addbackgroundcolor m-0">
-    <div class="offset-lg-2 col-lg-10 col-12 col-md-10 offset-md-2 col-sm-12">
+    <div class="offset-lg-2 col-lg-10 col-12 col-md-12 col-sm-12">
         <div class="trolley-content-main">
             <div class="small-heading">
                 <p class="small" style="font-size:12px">Trolleys/ List of Trolley/ Add new trolley</p>
@@ -66,12 +66,17 @@
                                     [cpAddColorButton]="true" type="text" class="form-control rounded-1" id="trolleycolor"
                                     formControlName="trolleycolor" placeholder="Trolley Color" required
                                     [(ngModel)]="addnewtrolley.trolleyColour" [formControl]="trolleycolor" (Change)="getcolorval(colorList[0].value)"/> -->
-                                    <input type="color" #colorval id="selectcolor" (change)="getcolorval(colorval.value)"><br>
+                                    <!-- <input type="color" #colorval id="selectcolor" (change)="getcolorval(colorval.value)"><br> -->
                                 <!-- <span class="text-danger"
                                     *ngIf="(submitformControl['trolleycolor'].touched || submitted) && colorval.value!=null">
                                     Trolley Color is required
                                 </span> -->
+                                <select name="" id="" *ngFor="let colors of colorsList" class="radius">
+                                    <option value="" disabled selected>-Select Color-</option>
+                                    <option value="">{{colors}} <span style="background-color:red; padding: 2px;"></span></option>
+                                </select>
                             </div>
+    <div>Working fine</div>
                             <div class="mb-3">
                                 <label for="department" class="form-label">Department</label>
                                 <input type="text" class="form-control rounded-1" id="department"

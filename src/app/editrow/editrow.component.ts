@@ -17,6 +17,9 @@ export class EditrowComponent implements OnInit {
   receiveid!: number
   qrimg:any;
 
+  colorsList = ['red', 'pink', 'purple', 'SlateBlue', 'indigo', 'blue', 'navy', 'cyan', 'teal', 'green', 'YellowGreen', 'lime', 'yellow', 'gold', 'orange', 'orangered', 'brown', 'grey', 'SlateGrey']
+
+
   constructor(
     private route: ActivatedRoute,
     private _edittrolley: EdittrolleyService,
@@ -41,7 +44,7 @@ export class EditrowComponent implements OnInit {
       next(data) {
         scopeThis.item = data;
         // console.log(scopeThis.item.qrCode);
-        scopeThis.colorName = GetColorName(scopeThis.item.trolleyColour);
+        // scopeThis.colorName = GetColorName(scopeThis.item.trolleyColour);
         console.log(scopeThis.item)
         scopeThis.qrcodedisplay(requiredid);
         scopeThis.spinner.hide()
@@ -65,12 +68,18 @@ export class EditrowComponent implements OnInit {
     })
 
   }
+  
+  getcolorval(val:any){
+    this.item.trolleyColour=val
+    console.log(val);
+  }
 
   saverow() {
     let scopeThis = this;
     debugger;
     this._edittrolley.putedittrolleyapi(this.item).subscribe({
       next(data) {
+       
         console.log(data);
         scopeThis.router.navigate(['dashboard/addtrolley']);
       },
@@ -82,6 +91,7 @@ export class EditrowComponent implements OnInit {
       }
     })
   }
+
 
 
 }

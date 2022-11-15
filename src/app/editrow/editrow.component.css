@@ -87,6 +87,18 @@
     margin-left: -40px;
   }
   
+  option{
+    text-transform: capitalize;
+    font-size: 13px;
+  }
+
+  select{
+    padding: 6px 12px;
+    width: 200px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+  }
   input{
     max-width: 200px;
   }

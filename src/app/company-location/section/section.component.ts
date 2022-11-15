@@ -84,11 +84,9 @@ export class SectionComponent implements OnInit {
     this.getnameParameterBuilding();
   }
   getnameParameterBuilding() {
-    debugger;
     let scopeThis = this;
     this._company.getBuildingDropdown(this.lid).subscribe({
       next(data) {
-        debugger;
         scopeThis.buildingDropdown = data;
         // console.log(scopeThis.buildingDropdown)
         scopeThis.buildingid = scopeThis.buildingDropdown.id;
@@ -112,7 +110,6 @@ export class SectionComponent implements OnInit {
     this.getnameParameterFloor();
   }
   getnameParameterFloor() {
-    debugger;
     let scopeThis = this;
     this._company.getFloorDropdown(this.Bid).subscribe({
       next(data) {
@@ -184,6 +181,7 @@ export class SectionComponent implements OnInit {
   img: Blob;
   displayFloorImage() {
     let scopeThis = this;
+    debugger;
     this._company.getFloorimage(this.addnewSection.floorId).subscribe({
 
       next(data) {
@@ -200,7 +198,6 @@ export class SectionComponent implements OnInit {
     this._company.getCompanySectionRow(this.sectionid).subscribe({
       next(data) {
         console.log(data);
-        debugger;
         scopeThis.addnewSection = data;
       },
       error(msg) {
@@ -215,7 +212,6 @@ export class SectionComponent implements OnInit {
     let scopeThis = this;
     this._company.putCompanySectionRow(this.addnewSection).subscribe({
       next(data) {
-        debugger;
         // scopeThis.addnewSection = data;
         scopeThis.addnewSection.id = scopeThis.sectionid;
         scopeThis._common.openSnackbar('Section row updated successfully');
@@ -231,129 +227,6 @@ export class SectionComponent implements OnInit {
     })
 
   }
-
- 
-  // clickEvent(event) {
-  //   this.redraw = true;
-  //   debugger;
-  //   var bbox = d3.select<SVGSVGElement, any>('#sectionImg').node().getBBox();
-  //   var cReact = document.getElementById('sectionImg').getBoundingClientRect();
-  //   let xFactor = bbox.width / cReact.width;
-  //   let yFactor = bbox.height / cReact.height;
-  //   var x = (event.clientX - cReact.left) * xFactor;
-  //   var y = (event.clientY - cReact.top) * yFactor;
-
-  //   var svg = d3.select('#drawArea');
-  //   if (this.points.length > 0) {
-  //     var line = svg.append("line")
-  //       .style("stroke", "red")
-  //       .attr("x1", this.points[this.points.length - 1][0])
-  //       .attr("y1", this.points[this.points.length - 1][1])
-  //       .attr("x2", x)
-  //       .attr("y2", y)
-  //       .attr("stroke-width", xFactor);
-
-  //     var a = (this.points[0][0] - x) / xFactor;
-  //     var b = (this.points[0][1] - y) / yFactor;
-  //     var c = Math.sqrt(a * a + b * b);
-  //     if (c < 5) {
-  //       this.points.push(this.points[0]);
-  //       this.createMap((this.points));
-  //       this.addnewSection.mapCoords = JSON.stringify(this.points);
-  //       this.points = [];
-  //       this.isDrawComplete = true;
-  //       document.getElementById("drawArea").removeEventListener('mousemove', this.moveEventRef);
-  //       document.getElementById("drawArea").removeEventListener('click', this.clickEventRef);
-  //     } else {
-  //       this.points.push([x, y]);
-  //     }
-  //   } else {
-  //     this.points.push([x, y]);
-  //   }
-  //   this.activeLine = this.activeLine ?
-  //     this.activeLine
-  //       .attr("x1", x)
-  //       .attr("y1", y)
-  //       .attr("x2", x)
-  //       .attr("y2", y) :
-  //     svg.append("line")
-  //       .style("stroke", "red")
-  //       .attr("x1", x)
-  //       .attr("y1", y)
-  //       .attr("x2", x)
-  //       .attr("y2", y)
-  //       .attr("stroke-width", xFactor);
-  //   if (!this.isDrawComplete) {
-  //     document.getElementById("drawArea").addEventListener('mousemove', this.moveEventRef);
-  //   }
-
-  // }
-
-  // moveEvent(event) {
-  //   var bbox = d3.select<SVGSVGElement, any>('#sectionImg').node().getBBox();
-  //   var cReact = document.getElementById('sectionImg').getBoundingClientRect();
-  //   let xFactor = bbox.width / cReact.width;
-  //   let yFactor = bbox.height / cReact.height;
-  //   var rect = event.target.getBoundingClientRect();
-  //   var x = (event.clientX - rect.left) * xFactor; //x position within the element.
-  //   var y = (event.clientY - rect.top) * yFactor;  //y position within the element.
-  //   this.activeLine.attr("x2", x)
-  //     .attr("y2", y);
-  // }
-
-  // onImageLoad() {
-  //   debugger;
-  //   document.getElementById("drawArea").addEventListener('click', this.clickeventRef);
-  //   let img = new Image();
-  //   img.src = d3.select("#sectionImg").attr('href');
-  //   let pathPoints = JSON.parse(this.addnewSection.mapCoords ? this.addnewSection.mapCoords : null);
-  //   let pathFunction = this.createMap;
-  //   img.onload = function (event) {
-  //     let loadedImage = (<HTMLInputElement>event.currentTarget);
-  //     let width = loadedImage.width;
-  //     let height = loadedImage.height;
-
-  //     let svg = d3.select('#drawArea');
-  //     svg.attr("viewBox", `0 0 ${width} ${height}`);
-
-  //     if (pathPoints?.length > 0) {
-  //       pathFunction(pathPoints);
-  //     }
-  //   }
-  // }
-
-  // private createMap(pathPoints: any) {
-  //   var lineGenerator = d3.line();
-  //   var pathString = lineGenerator(pathPoints);
-  //   var svg = d3.select("#drawArea");
-  //   var bbox = d3.select<SVGSVGElement, any>('#sectionImg').node().getBBox();
-  //   var cReact = document.getElementById('sectionImg').getBoundingClientRect();
-  //   let xFactor = bbox.width / cReact.width;
-  //   var path = svg.append("path");
-  //   path.attr('d', pathString)
-  //     .attr('fill', 'darkkhaki')
-  //     .style('opacity', 0.5)
-  //     .style('stroke-width', xFactor)
-  //     .style('stroke', 'red')
-  //     .on('mouseover', function (d) {
-  //       d3.select(this).style('opacity', '0.8');
-  //     })
-  //     .on('mouseout', function (d) {
-  //       d3.select(this).style('opacity', '0.5');
-  //     });
-  //   return svg;
-  // }
-
-  // deleteSelectedShape() {
-  //   d3.select("#drawArea").selectAll('line').remove();
-  //   d3.select("#drawArea").selectAll('path').remove();
-  //   this.points = [];
-  //   this.activeLine = undefined;
-  //   this.redraw = false;
-  //   this.isDrawComplete = false;
-  //   document.getElementById("drawArea").addEventListener('click', this.clickEventRef);
-  //   // document.getElementById("drawArea").addEventListener('mousemove', this.moveEventRef);
-  // }
 
 
   clickEvent(e) {

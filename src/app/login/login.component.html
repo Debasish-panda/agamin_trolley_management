@@ -11,11 +11,13 @@
             <mat-form-field appearance="legacy" class="mat-input-container mat-form-field">
                 <mat-label>Password</mat-label>
                 <input matInput [type]="hide ? 'password' : 'text'" placeholder="Enter your password" class="fadeIn" formControlName="password" required [(ngModel)]="login.password" (keyup.enter)="loginbyclick()">
+                
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     
                 </button>
+                
             </mat-form-field>
             <div class="example-button-row">
                 <button mat-button class="submit" (click)="loginbyclick()">Submit</button>

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +7,11 @@ import { Router } from '@angular/router';
 export class CommonService {
 
   constructor(
-    private snackbar:MatSnackBar,
-    private router:Router
+    private snackbar: MatSnackBar,
   ) { }
 
   openSnackbar(message: string) {
     this.snackbar.open(message, "", { duration: 2000 })
   }
- 
+  listoftrolleytable: boolean = true;
 }

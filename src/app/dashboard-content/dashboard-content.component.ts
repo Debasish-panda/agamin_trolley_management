@@ -35,10 +35,12 @@ export class DashboardContentComponent implements OnInit {
   }
   barchart() {
     // console.log(this.holddashboardvalue.totalTrolley);
+    const label:any = ['Total Trolly', 'To Be Filled', 'To Be Shipped', 'To Be Received', 'Out Of Trace'];
     const barChart = new Chart('barChart', {
       type: 'bar',
+     
       data: {
-        labels: ['Total Trolly', 'To Be Filled', 'To Be Shipped', 'To Be Received', 'Out Of Trace'],
+        labels:label,
         datasets: [{
           data: [this.holddashboardvalue?.totalTrolley, this.holddashboardvalue?.trolleyToBeFilled, this.holddashboardvalue?.trolleyToBeShipped, this.holddashboardvalue?.trolleyTobeReceived, this.holddashboardvalue?.trolleyOutOfTrace],
           // data: [200, 33, 333, 29, 22],
@@ -63,6 +65,7 @@ export class DashboardContentComponent implements OnInit {
             'rgb(230, 151, 250)',
             'rgb(251, 137, 175)'
           ],
+        
           borderWidth: 1,
           barPercentage: 0.35
         }]
@@ -70,7 +73,7 @@ export class DashboardContentComponent implements OnInit {
       options: {
         plugins: {
           legend: {
-            display: false
+            display:false,
           }
         },
         elements: {
@@ -79,11 +82,20 @@ export class DashboardContentComponent implements OnInit {
           }
         },
         scales: {
-          yAxis: {
+          y: {
             beginAtZero: true,
+            display:true,
+            title: {
+              display: true,
+              text: 'Trolley Count'
+            }
           },
-          xAxis: {
-            display: false
+          x: {
+            display: true,
+            grid: {
+              display: false
+           }
+           
           }
         },
 
@@ -96,8 +108,8 @@ export class DashboardContentComponent implements OnInit {
       type: 'pie',
       data: {
         labels: [
-          'Total Active Trolly',
-          'Total Inactive Trolly'
+          'Total Active Trolley',
+          'Total Inactive Trolley'
         ],
         datasets: [{
           data: [this.holddashboardvalue?.totalTrolley, this.holddashboardvalue?.trolleyInactive],

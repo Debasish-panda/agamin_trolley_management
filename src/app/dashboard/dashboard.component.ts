@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.displayNavbar = '1';
+
     $(document).ready(function(){
       $(".nav-link").click(function () {
         $(".arrow-icon").toggleClass('arrow-icon-rotate');
@@ -32,11 +33,25 @@ export class DashboardComponent implements OnInit {
       });
     });
  
+
     // $("#menu-toggle").click(function(e) {
     //   e.preventDefault();
     //   $("#wrapper").toggleClass("toggled");
     // });
 
+
+    $(document).ready(function () {
+
+      $('#sidebarCollapse').click(function (e) {
+        e.stopPropagation();
+          $('#sidebar').toggleClass('active');
+      });
+      $('.routerset').click(function(e) {
+        if ($('#sidebar').hasClass('active')) {
+          $("#sidebar").toggleClass('active')
+        }
+      })  
+  });
   }
 
   toggleelement() {

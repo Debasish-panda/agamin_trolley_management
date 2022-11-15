@@ -1,5 +1,5 @@
 <div class="container-fluid row addbackgroundcolor m-0">
-    <div class="offset-lg-2 col-lg-10 col-12 col-md-10 offset-md-2 col-sm-12">
+    <div class="offset-lg-2 col-lg-10 col-12 col-md-12 col-sm-12">
         <div class="trolley-content-main">
             <div class="small-heading">
                 <p class="small" style="font-size:12px">Add new trolley/Edit Trolley</p>
@@ -40,10 +40,14 @@
                                     id="trolleytype" placeholder="Trolley Type" required>
                             </div>
                             <div class="col-lg-4 col-xl col-sm-4 col-md-4">
-                                <label for="trolleycolor" class="form-label">Trolley Color</label>
-                                <input type="text" class="form-control rounded-1 border-0" readonly
-                                     [value]="colorName"
-                                    id="trolleycolor" placeholder="Trolley Color" required>
+                                <label for="trolleycolor" class="form-label">Trolley Color</label><br>
+                                <!-- <input type="text" class="form-control rounded-1 border-0"
+                                     [(ngModel)]="item.trolleyColour" [ngModelOptions]="{standalone: true}"
+                                    id="trolleycolor" placeholder="Trolley Color" required> -->
+                                    <select name="trolleycolor" id="trolleycolor" #selectedColor  (change)="getcolorval(selectedColor.value)">
+                                        <option selected disabled>{{item.trolleyColour}}</option>
+                                        <option *ngFor="let data of colorsList" value="{{data}}" [style.background-color]="data">{{data}}</option>
+                                    </select>
                             </div>
                             <div class="col-lg-4 col-xl col-sm-4 col-md-4">
                                 <label for="department" class="form-label">Department</label>

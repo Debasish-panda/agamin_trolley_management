@@ -14,6 +14,7 @@ import { PrintQrcodeComponent } from '../print-qrcode/print-qrcode.component';
 import { NgxPrintElementService } from 'ngx-print-element';
 import { NgxSpinnerService } from 'ngx-spinner';
 
+
 @Component({
   selector: 'app-addtrolley',
   templateUrl: './addtrolley.component.html',
@@ -56,7 +57,8 @@ export class AddtrolleyComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.getListoftrolleyService();
+    this.trollytabledisplay();
+ 
   }
   displayedColumns: string[] = ['select', 'id', 'image', 'trolleyNumber', 'trolleyModel', 'trolleyName', 'partsCapacity', 'department', 'bleTagId', 'qrCode'];
   selection = new SelectionModel<Addnewtrolley>(true, []);
@@ -93,7 +95,7 @@ export class AddtrolleyComponent implements OnInit, AfterViewInit {
     this.spinner.show()
     this._listoftrolleyService.getlistoftrolleyapi(this.queryString, 1, this.paginationlength.pageSize).subscribe({
       next(data) {
-        
+        debugger;
         scopeThis.item = data
         console.log(scopeThis.item)
         scopeThis.dataSource = new MatTableDataSource<any>(scopeThis.item.data);
@@ -114,6 +116,11 @@ export class AddtrolleyComponent implements OnInit, AfterViewInit {
 
   }
 
+  trollytabledisplay() {
+    if (this._common.listoftrolleytable == true) {
+      this.getListoftrolleyService();
+    }
+  }
 
   pagechange(event: any) {
     this.spinner.show()
@@ -160,7 +167,7 @@ export class AddtrolleyComponent implements OnInit, AfterViewInit {
   getrowid(ID: number) {
     this.router.navigate(['/dashboard/editrow', ID]);
   }
- 
+
 
   idsarr: any = [];
   getallids(isChecked: boolean) {
@@ -170,25 +177,27 @@ export class AddtrolleyComponent implements OnInit, AfterViewInit {
         this.idsarr.push(this.item.data[i].id)
         console.log(this.idsarr)
       }
-    } 
+    }
   }
-  onChecked(val: any, isChecked:boolean) {
+  onChecked(val: any, isChecked: boolean) {
     console.log(val, isChecked)
     // this.idsarr.push(val);
-    if(isChecked==false){
+    if (isChecked == false) {
       console.log(val)
       debugger;
-      for(let i=0; i<this.idsarr.length; i++){
-        if(this.idsarr[i]==val){
-          this.idsarr.splice(i,1)
+      for (let i = 0; i < this.idsarr.length; i++) {
+        if (this.idsarr[i] == val) {
+          this.idsarr.splice(i, 1)
         }
       }
       console.log(this.idsarr)
-    }if(isChecked==true){
+    } if (isChecked == true) {
       this.idsarr.push(val);
       console.log(this.idsarr)
     }
   }
+
+
 
   @ViewChild(PrintQrcodeComponent)
 
@@ -235,6 +244,6 @@ export class AddtrolleyComponent implements OnInit, AfterViewInit {
     window.print();
     document.body.innerHTML = originalContents;
     window.location.reload()
-  }
+  }  
 
 }

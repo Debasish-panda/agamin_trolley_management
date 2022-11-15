@@ -1,5 +1,5 @@
 <div class="container-fluid row  m-0">
-    <div class="offset-lg-2 col-lg-10 col-12 col-md-10 offset-md-2 col-sm-12">
+    <div class="offset-lg-2 col-lg-10 col-12 col-md-12 col-sm-12">
 
         <!--col-xs-12 col-sm-offset-0 col-lg-6 col-lg-offset-2 text-center-->
         <div class="trolley-content-main">
@@ -108,9 +108,9 @@
                             </ng-container>
 
                             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                            <tr mat-row *matRowDef="let row; let element; columns: displayedColumns; let i = index;">
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;">
                             </tr>
-                            <!-- (click)="getrow(element['Id'])", (click)="getrow(row,$event)" -->
+                            
                         </table>
 
                         <mat-paginator #trolleyPage showFirstLastButtons aria-label="Select page of table data"
@@ -136,8 +136,11 @@
 
             </div>
         </div>
+        
     </div>
 </div>
+
+
 
 
 <router-outlet></router-outlet>

@@ -56,9 +56,12 @@
                             </div>
                             <div class="col-lg-4 col-xl col-sm-4 col-md-4">
                                 <label for="trolleycolor" class="form-label">Trolley Color</label><br>
-                                <input type="color" #colorval id="selectcolor"
-                                    (change)="getcolorval(colorval.value)"> <p class="d-inline">{{colorName=="" ? "Select color" : colorName}}</p><br>
-
+                                <!-- <input type="color" #colorval id="selectcolor"
+                                    (change)="getcolorval(colorval.value)"> <p class="d-inline">{{colorName=="" ? "Select color" : colorName}}</p><br> -->
+                                    <select name="" id="" #selectedColor  (change)="getcolorval(selectedColor.value)">
+                                        <option value="" selected disabled>Select color</option>
+                                        <option *ngFor="let data of colorsList" value="{{data}}" [style.backgroundColor]="data">{{data}}</option>
+                                    </select>
                             </div>
                             <div class="col-lg-4 col-xl col-sm-4 col-md-4">
                                 <label for="department" class="form-label">Department</label>
