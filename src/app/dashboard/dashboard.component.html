@@ -14,14 +14,14 @@
                     <a class="nav-link d-flex align-items-center"> Alerts<img src="./assets/image/notification.png"
                             alt="" class="icon-set"></a>
                 </li>
-                <li class="nav-item dropdown show">
+                <li class="nav-item dropdown show" >
                     <a class="nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown"
                         id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false" (click)="togglelogout()">
                         <img src="./assets/image/profile-avatar.png" class="icon-set" alt="">
                     </a>
-                    <div class="dropdown-menu logoutcustom" aria-labelledby="dropdownMenuLink"
+                    <div class="dropdown-menu logoutcustom" aria-labelledby="dropdownMenuLink" 
                         [ngStyle]="logout == '0' ? {'display': 'block'} : {'display': 'none'}">
-                        <a class="dropdown-item link-active-bg-none" (click)="navigate()">Logout</a>
+                        <a class="dropdown-item link-active-bg-none"  (click)="navigate()">Logout</a>
                     </div>
                 </li>
             </ul>

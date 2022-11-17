@@ -105,8 +105,9 @@
                                                             </ng-template>
 
                                                         </td>
+
                                                     </ng-container>
-                                                    <tr mat-header-row *matHeaderRowDef="columnsToDisplayLocation"></tr>
+                                                    <tr mat-header-row *matHeaderRowDef="columnsToDisplayLocation sticky:true;" style="background-color: white;"></tr>
                                                     <tr mat-row
                                                         *matRowDef="let row; columns: columnsToDisplayLocation;"></tr>
                                                 </table>
@@ -179,7 +180,7 @@
                                                             </ng-template>
                                                         </td>
                                                     </ng-container>
-                                                    <tr mat-header-row *matHeaderRowDef="columnsToDisplayBuilding"></tr>
+                                                    <tr mat-header-row *matHeaderRowDef="columnsToDisplayBuilding sticky:true;" style="background-color: white;"></tr>
                                                     <tr mat-row
                                                         *matRowDef="let row; columns: columnsToDisplayBuilding;"></tr>
                                                 </table>
@@ -275,7 +276,7 @@
                                                             </ng-template>
                                                         </td>
                                                     </ng-container>
-                                                    <tr mat-header-row *matHeaderRowDef="columnsToDisplayFloor"></tr>
+                                                    <tr mat-header-row *matHeaderRowDef="columnsToDisplayFloor sticky:true;" style="background-color: white;"></tr>
                                                     <tr mat-row *matRowDef="let row; columns: columnsToDisplayFloor;">
                                                     </tr>
                                                 </table>
@@ -388,7 +389,7 @@
                                                             </ng-template>
                                                         </td>
                                                     </ng-container>
-                                                    <tr mat-header-row *matHeaderRowDef="columnsToDisplaySection"></tr>
+                                                    <tr mat-header-row *matHeaderRowDef="columnsToDisplaySection sticky:true;" style="background-color: white;"></tr>
                                                     <tr mat-row *matRowDef="let row; columns: columnsToDisplaySection;">
                                                     </tr>
                                                 </table>
